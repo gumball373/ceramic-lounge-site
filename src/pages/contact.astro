@@ -1,0 +1,135 @@
+---
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+---
+
+<Header></Header>
+<main>
+    <div class="container">
+        <div class="contact"><img src="/contact-svg.svg" alt="Contact"/>
+            <div class="subtitle">Reach out to us if you have questions about events,<br>partnerships, or event hosting.</div>
+        </div>
+        <div class="text">
+            Email:<br>
+            CeramicLoungeCoffee@gmail.com
+        </div>
+        <div class="text">
+            Social Media:<br>
+        </div>
+        <div class="sm-flex">
+            <div>
+                <div class="circle"><div class="sm-text">Festigral</div></div>
+            </div>
+            <div>
+                <div class="circle"><div class="sm-text">Youtube</div></div>
+            </div>
+            <div>
+                <div class="circle"><div class="sm-text">Instagram</div></div>
+            </div>
+            <div>
+                <div class="circle"><div class="sm-text">Tiktok</div></div>
+            </div>
+        </div>
+        <div class="text">
+            Events:<br>
+            <u>Check Out Our Calendar</u>
+        </div>
+    </div>
+</main>
+<Footer></Footer>
+
+<style is:global>
+    main{
+        min-height: 79vh;
+    }
+    
+	:root {
+		/* vars go here */
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: black;
+		color: white;
+		font-family: 'Courier New', Courier, monospace;
+		overflow-x: hidden;
+	}
+
+    body{
+        margin: 0;
+    }
+
+	::-webkit-scrollbar{
+    width: 12px;
+	}
+	::-webkit-scrollbar-thumb{
+    background: black;
+	border: 2px solid white;
+	}
+	::-webkit-scrollbar-corner{
+		background-color: black;
+	}
+</style>
+<style>
+    .container{
+        background: url("/concrete.webp");
+        background-size: cover;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
+		mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
+        min-height: 82vh;
+    }
+    .contact{
+        padding: 65px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+    .subtitle{
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    .contact img{
+        height: 60px;
+    }
+    .text{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    .sm-flex{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: -25px;
+        padding-bottom: 70px;
+    }
+    .sm-flex > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .circle{
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        background-color: black;
+        box-shadow: 0 0 8px white;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        transition: 250ms;
+    }
+    .circle:hover{
+        box-shadow: 0 0 28px white;
+        cursor: pointer;
+    }
+    .sm-text{
+        text-align: center;
+        margin-top: 60px;
+        width: fit-content;
+    }
+    u{
+        cursor: pointer;
+        color: yellow;
+    }
+</style>

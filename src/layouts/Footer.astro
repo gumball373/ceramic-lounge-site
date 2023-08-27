@@ -1,0 +1,77 @@
+
+
+<div class="container">
+    <div class="caliper-flex">
+        <div class="caliper"></div>
+        <div class="caliper-text">Ceramic Lounge <br/>Coffee</div>
+    </div>
+    <div class="flex-menu">
+        <a href="/index.html"><div>Home</div></a>
+        <a href="/products.html"><div>Products</div></a>
+        <a href="/nutrition.html"><div>Nutrition</div></a>
+        <a href="/contact.html"><div>Contact</div></a>
+    </div>
+</div>
+<style>
+    .container{
+        background: black; /**linear-gradient(to bottom, black, rgb(42, 42, 42) 10%) */
+        padding: 10px 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    a > div{
+        color: white;
+    }
+
+    .container > div{
+        padding: 10px;
+        margin: auto 0;
+        border-radius: 5px;
+        background-color: rgba(0,0,0, 0.4);
+    }
+
+    .caliper-flex{
+        display: flex;
+    }
+
+    .caliper{
+        width: 75px;
+        height: 75px;
+        background: url("/CL-red-caliper.svg");
+        transform: scaleX(-1);
+        background-color: transparent !important;
+    }
+
+    .caliper-text{
+        margin: auto;
+        padding: 0px 20px;
+        text-align: center;
+    }
+
+    .flex-menu{
+        display: flex;
+        justify-content: space-around;
+        flex-basis: 420px;
+    }
+
+    .flex-menu div{
+        padding: 12px 10px;
+        background-color: rgba(255,255,255, 0.2);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 200ms;
+    }
+
+    .flex-menu div:hover{
+        background-color: transparent;
+    }
+</style>
+<script>
+</script>

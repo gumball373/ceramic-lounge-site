@@ -1,0 +1,73 @@
+---
+import Header from '../layouts/Header.astro';
+import Footer from '../layouts/Footer.astro';
+import StoreLayout from '../layouts/StoreLayout.astro';
+---
+
+<Header></Header>
+    <main class="store">
+		<div class="title-container">
+			<img class="title-pic" src="/products-svg.svg" alt="Products">
+			<div class="subtitle"> Check out all our goodies, from coffee to car stickers, we've got the fix.<br>
+				Also dont forget to check out our coffee lineups for a variety of flavors
+			</div>
+		</div>
+        <StoreLayout></StoreLayout>
+    </main>
+<Footer></Footer>
+
+<style is:global>
+    main{
+        min-height: 79vh;
+    }
+    
+	:root {
+		/* vars go here */
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: black;
+		color: white;
+		font-family: 'Courier New', Courier, monospace;
+		overflow-x: hidden;
+	}
+
+    body{
+        margin: 0;
+    }
+
+	::-webkit-scrollbar{
+    width: 12px;
+	}
+	::-webkit-scrollbar-thumb{
+    background: black;
+	border: 2px solid white;
+	}
+	::-webkit-scrollbar-corner{
+		background-color: black;
+	}
+    
+	.store{
+		background: url("/garage2-min-min.webp");
+		background-size: cover;
+	}
+</style>
+<style>
+	.title-container{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 65px 0 0 0;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.subtitle{
+		margin-bottom: 25px;
+	}
+
+	.title-pic{
+		height: 60px;
+	}
+</style>

@@ -1,0 +1,490 @@
+---
+const coffeeProds = await Astro.glob("../content/products/coffee/*.md");
+const stickerProds = await Astro.glob("../content/products/stickers/*.md");
+const moreProds = await Astro.glob("../content/products/more/*.md");
+const {itemMax = Infinity} = Astro.props;
+var tabIndexx = 9;
+---
+
+<div class="container">
+    <div class="tab-flex">
+        <label for="Coffee" tabindex={tabIndexx++}><input id="Coffee" type="radio" name="tabs" checked="true">Coffee</input></label>
+        <label for="Stickers" tabindex={tabIndexx++}><input id="Stickers" type="radio" name="tabs">Stickers</input></label>
+        <label for="More" tabindex={tabIndexx++}><input id="More" type="radio" name="tabs">More</input></label>
+    </div>
+    <div class="prod-grid">
+        <div class="grids coffee">
+            {
+                coffeeProds.filter((product, idx) => idx < itemMax).map((product) => (
+                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        
+                        <div class="bottom">
+                            <h>{product.frontmatter.name}</h>
+                            <p>{product.frontmatter.description}</p>
+                        </div>
+                        <div class="tag-svg">
+                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                        </div>
+                        <div class="price" tabindex={tabIndexx++}>
+                            <span>${product.frontmatter.price}</span>
+                        </div>
+                        <div big-prod class="big-prod">
+                            <div class="grid">
+                                <div>
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="increment"></div>-->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="decrement"></div> -->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                            </div>
+                            <div class="title">{product.frontmatter.name}</div>
+                            <div class="text">{product.frontmatter.description}</div>
+                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div class="grids stickers">
+            {
+                stickerProds.filter((product, idx) => idx < itemMax).map((product) => (
+                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        
+                        <div class="bottom">
+                            <h>{product.frontmatter.name}</h>
+                            <p>{product.frontmatter.description}</p>
+                        </div>
+                        <div class="tag-svg">
+                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                        </div>
+                        <div class="price" tabindex={tabIndexx++}>
+                            <span>${product.frontmatter.price}</span>
+                        </div>
+                        <div big-prod class="big-prod">
+                            <div class="grid">
+                                <div>
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="increment"></div>-->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="decrement"></div> -->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                            </div>
+                            <div class="title">{product.frontmatter.name}</div>
+                            <div class="text">{product.frontmatter.description}</div>
+                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div class="grids more">
+            {
+                moreProds.filter((product, idx) => idx < itemMax).map((product) => (
+                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        
+                        <div class="bottom">
+                            <h>{product.frontmatter.name}</h>
+                            <p>{product.frontmatter.description}</p>
+                        </div>
+                        <div class="tag-svg">
+                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                        </div>
+                        <div class="price" tabindex={tabIndexx++}>
+                            <span>${product.frontmatter.price}</span>
+                        </div>
+                        <div big-prod class="big-prod">
+                            <div class="grid">
+                                <div>
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="increment"></div>-->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                                <div>
+                                    <!--<div class="decrement"></div> -->
+                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                </div>
+                            </div>
+                            <div class="title">{product.frontmatter.name}</div>
+                            <div class="text">{product.frontmatter.description}</div>
+                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        {itemMax != Infinity ?
+            <button class="view-all" onclick='location.replace("products.html")' tabindex={tabIndexx++}>
+                View All
+            </button>
+            : <style>.prod-grid{padding-bottom: 20px !important}</style>
+        }
+    </div>
+</div>
+<style>
+    :root{
+        --bg-color: #00000090;
+    }
+
+    .container{
+        margin: 35px;
+    }
+
+    .tab-flex{
+        display: flex;
+        gap: 10px;
+        margin-left: 10px;
+        margin-bottom: -2px;
+    }
+
+    .tab-flex label {
+        border: 2px solid white;
+        background-color: black;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        padding: 0 8px;
+        border-bottom: 2px solid var(--bg-color);
+        z-index: 1;
+    }
+
+    .tab-flex input{
+        padding: 0;
+        margin: 0;
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+
+    .tab-flex label:has(input:checked){
+        z-index: 3;
+    }
+
+    .prod-grid{
+        position: relative;
+        border: 2px solid white;
+        background-color: var(--bg-color);
+        border-radius: 5px;
+        padding: 20px;
+        padding-bottom: 70px;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .prod-grid .grids{
+        display: none;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 40px;
+    }
+
+    .view-all{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background: #AC0000;
+        cursor: pointer;
+        border: 1px dotted black;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 3px;
+    }
+    .view-all::after{
+		content: "";
+		display: block;
+		bottom: 0;
+		height: 1px;
+		width: 0px;
+		border-radius: 2px;
+		transition: 250ms;
+	}
+    .view-all:hover::after,
+    .view-all:focus-visible::after{
+		content: "";
+		width: 100%;
+		background-color: white; 
+	}
+
+    .view-all:active{
+        background-color: #880000;
+    }
+
+    .prod{
+        aspect-ratio: 1 / 1;
+        position: relative;
+        padding: 8px;
+        background-color: black;
+        box-shadow: 0px 0px 8px white;
+        cursor: pointer;
+        transition: 300ms;
+        flex-basis: max(18vw, 250px);
+        border-radius: 3px;
+    }
+
+    .prod::after{
+        content:"";
+        background: radial-gradient(white, transparent);
+        width: 1px;
+        height: 40px;
+        overflow: hidden;
+        position: absolute;
+        left: 0px;
+        top:0;
+        margin-top: 80%;
+        opacity: 0;
+        transition: 400ms;
+    }
+
+    .prod:hover{
+        transform: rotate3d(-8,8,0,-10deg);
+    }
+    /* .prod:has(.big-prod[shown="true"]){
+        transform: none;
+        transition: 0ms !important;
+        cursor: default;
+        overflow: unset;
+    }
+    .prod:has(.big-prod[shown="true"]) *{
+        transform: none;
+        transition: 0ms !important;
+        cursor: default;
+    } */
+    .prod:focus{
+        transform: none;
+        transition: 0ms !important;
+        cursor: default;
+        overflow: unset;
+    }
+    .prod:focus *{
+        transform: none;
+        transition: 0ms !important;
+        cursor: default;
+    }
+    .prod:focus .big-prod{
+        display: grid;
+    }
+
+    .prod:hover::after{
+        opacity: 1;
+        margin-top: 10px;
+    }
+
+    .prod::before{
+        content:"";
+        background: radial-gradient(white, transparent);
+        width: 40px;
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        left: 0px;
+        top:0px;
+        margin-left: 80%;
+        opacity: 0;
+        transition: 400ms;
+    }
+
+    .prod:hover::before{
+        opacity: 1;
+        margin-left: 10px;
+    }
+
+    .prod img{
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    .prod .bottom{
+        position: absolute;
+        background-color: black;
+        padding: inherit;
+        height: 20%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 6px;
+    }
+
+    .prod .tag-svg{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        bottom: 10%;
+        right: 0;
+        border: 1px solid white;
+        border-right: 1px solid transparent;
+    }
+
+    .prod p{
+        margin: 0;
+        width: calc(100% - 50px);
+        height: 24px;
+        font-size: 8pt;
+        overflow: clip !important;
+    }
+
+    .tag-svg img{
+        width: 90%;
+        margin: 5%;
+        
+        transition: 400ms;
+    }
+
+    .prod:hover .tag-svg img{
+        transform: rotate(575deg);
+    }
+
+    .price{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 30%;
+        background-color: #AC0000;
+        height: 20px;
+        text-align: center;
+        padding-top: 2px;
+        border-bottom-right-radius: 3px;
+    }
+    .price span{
+        position: relative;
+    }
+
+    .price:hover span,
+    .price:focus span{
+        display:none;
+    }
+
+    .price::before{
+        position: absolute;
+        content: "Buy Me!";
+        font-weight: 700;
+        padding: 2px 4px;
+        transition: 200ms;
+        opacity: 0;
+        left: 0;
+        right: -2px;
+        top: 0;
+    }
+
+    .price:hover::before,
+    .price:focus::before{
+        opacity:1;
+    }
+
+    .big-prod{
+        display: none;
+        position: absolute;
+        width: 150%;
+        top: 0;
+        left: 50%;
+        /* overflow: clip; */
+        transform: translateX(-50%) !important;
+        background-color: black;
+        box-shadow: 0px 0px 8px white;
+        border-radius: 3px;
+        z-index: 5;
+    }
+
+    .big-prod img{
+        height: 100%;
+        aspect-ratio: 1/1;
+    }
+
+    .big-prod .grid{
+        display: grid;
+        width: 90%;
+        /* height: 250px; */
+        aspect-ratio: 16/9;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-rows: repeat(8, auto);
+        margin: 5%;
+    }
+
+    .big-prod .grid > :nth-child(1){
+        background: grey;
+        grid-column: 1/9;
+        grid-row: 1/9;
+        /* overflow: hidden; */
+    }
+    .big-prod .grid > :nth-child(2){
+        position: relative;
+        background: grey;
+        grid-column: 9/13;
+        grid-row: 1/5;
+    }
+    .big-prod .grid > :nth-child(3){
+        position: relative;
+        background: grey;
+        grid-column: 9/13;
+        grid-row: 5/9;
+    }
+
+    .big-prod .grid > * {
+        border: 2px solid black;
+    }
+
+    .big-prod .title{
+        margin: 0 5% 2% 5%;
+    }
+    .big-prod .text{
+        margin: 5%;
+        margin-top: 0;
+    }
+    .big-prod .increment,
+    .big-prod .decrement{
+        position: absolute;
+        background-color: black;
+        border: 2px solid white;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        width: 30px;
+        height: 15px;
+        cursor: pointer !important;
+    }
+    .big-prod .increment{
+        top: -7px;
+    }
+    .big-prod .decrement{
+        bottom: -7px;
+    }
+    
+    .buy-now-container{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 10px;
+        margin: 5%;
+        margin-top: 0;
+    }
+    .buy-now{
+        padding: 10px 25px;
+        background: #AC0000;
+        font-weight: 700;
+        cursor: pointer !important;
+    }
+    .container:has(#Stickers:checked) .stickers{
+        display: flex;
+    }
+    .container:has(#Coffee:checked) .coffee{
+        display: flex;
+    }
+    .container:has(#More:checked) .more{
+        display: flex;
+    }
+</style>

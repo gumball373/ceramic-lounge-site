@@ -1,0 +1,88 @@
+
+<div class="container">
+    <div class="text-area">
+        <div class="title">Stay up to date</div>
+        <div>Check out our calendar and see all our events.</div>
+    </div>
+    <div class="radio-container">
+        <div class="radio">
+            <div class="radio-title">
+                <div>
+                    Bombshells<br>
+                    Car Show Apr 29th
+                </div>
+                
+            </div>
+            <div class="lil-img">
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    *{
+        /* border: 1px solid white; */
+    }
+
+    .title{
+        font-size: 16pt;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 10px auto;
+    }
+
+    .text-area{
+        padding: 50px;
+        background: radial-gradient(rgba(255,255,255,0.28) 15% ,black 70%);
+    }
+
+    .radio-container{
+        margin: 10px;
+        /* padding: 25px; */ /* makes a background that looks like the radio is installed */
+        /* background-color: rgba(255, 255, 255, 0.045); */
+        border-radius: 5px;
+        aspect-ratio: 4 / 1;
+        flex-basis: min(600px, 90vw);
+    }
+
+    .radio{
+        aspect-ratio: 4 / 1;
+        background-image: url('/radio-bg.png');
+        background-size: cover;
+        position: relative;
+    }
+
+    .radio-title{
+        position: absolute;
+        top: 14%;
+        left: 26%;
+        width: 53%;
+        height: 61%;
+        overflow: hidden;
+        text-align: center;
+        font-size: 16pt;
+        font-weight: 700;
+    }
+    .radio-title > div{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .lil-img{
+        position: absolute;
+        width: 16%;
+        right: 3.33%;
+        top: 13.25%;
+        bottom: 23%;
+        background: radial-gradient(darkgrey,lightgrey);
+        border-radius: 3px;
+        opacity: 0.30;
+    }
+</style>

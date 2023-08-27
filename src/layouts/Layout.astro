@@ -1,0 +1,44 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content=" The Ceramic Lounge is a coffee company built on serving the car community and giving them a place to hold event and socialize.">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		/* vars go here */
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: black;
+		color: white;
+		font-family: 'Courier New', Courier, monospace;
+		overflow-x: hidden;
+	}
+	::-webkit-scrollbar{
+    width: 12px;
+	}
+	::-webkit-scrollbar-thumb{
+    background: black;
+	border: 2px solid white;
+	}
+	::-webkit-scrollbar-corner{
+		background-color: black;
+	}
+</style>

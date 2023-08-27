@@ -1,0 +1,78 @@
+
+<div class="container">
+    <img class="hero-img" src="/hero2-min.webp" alt="hero-img">
+    <div class="hero-section">
+        <div class="left-side-container">
+            <div class="left-text">  Shop <br>
+                Coffee  <br>
+                 Below
+            </div>
+            <button tabindex="8" >Go&nbsp;There</button>
+        </div>
+    </div>
+</div>
+<style>
+    .container{
+        position: relative;
+        width: 100%;
+        aspect-ratio: 19/7;
+    }
+
+    .container > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .hero-img{
+        /* object-fit: cover; */
+        width: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, black 95%, transparent);
+        mask-image: linear-gradient(to bottom, black 95%, transparent);
+    }
+    .left-side-container{
+        position: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+        top: 40%;
+        bottom: 10%;
+        width: 15%;
+        right: 30px;
+        gap: 25px;
+        margin-left: 3%;
+    }
+    .left-text{
+        text-align: center;
+        font-size: 24pt;
+        margin: 0;
+    }
+    button{
+        background-color: #AC0000;
+        border: 1px dotted black;
+        aspect-ratio: 5/2;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14pt;
+        cursor: pointer;
+        padding: 6px;
+    }
+    button::after{
+		content: "";
+		display: block;
+		bottom: 0;
+		height: 1px;
+		width: 0px;
+		border-radius: 2px;
+		transition: 250ms;
+	}
+    button:hover::after,
+    button:focus::after{
+		content: "";
+		width: 100%;
+		background-color: white; 
+	}
+</style>
