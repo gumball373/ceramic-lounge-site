@@ -45,7 +45,7 @@ var tabIndexx = 9;
                             </div>
                             <div class="title">{product.frontmatter.name}</div>
                             <div class="text">{product.frontmatter.description}</div>
-                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                            <div class="buy-now-container"><div data-priceID={product.frontmatter.priceID} class="buy-now" onclick="">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
                         </div>
                     </div>
                 ))
