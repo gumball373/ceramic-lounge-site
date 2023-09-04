@@ -1,24 +1,38 @@
 <script setup>
     import { onMount } from "svelte";
 
-    let visible = false;
+    let visible = true;
 
     let cart;
     let cartContainer;
 
     onMount(() => {
-
+        if(!visible){
+            toggleVissible()
+        }
+        // localStorage.removeItem('cart')
         let cart = localStorage.getItem('cart');
         let cartData = JSON.parse(cart);
 
-        cartData.map((k,v) => {
-            console.log('ran');
-            addToCart(v.src, v.alt, v.name, v.price, v.priceID);
-        });
+        for (var [key, value] of Object.entries(cartData)) {
+            addToCart(value.src, value.alt, value.name, value.price, value.priceID);
+        }
+
+        try{
+            refresh();
+        } catch {
+
+        }
     })
 
     function toggleVissible() {
-        visible = !visible
+        if(cartContainer.style.transform == 'translateX(0%)'){
+            // cartContainer.style.width = "0px"
+            cartContainer.style.transform = 'translateX(100%)'
+        } else {
+            // cartContainer.style.width = "300px"
+            cartContainer.style.transform = 'translateX(0%)'
+        }
     }
 </script>
 <div class="cart-user">
@@ -36,9 +50,9 @@
     <div class="mobile-menu-button" tabindex="9">
         <div class="mobile-menu">
             <div><a href="/">Home</a></div>
-            <div><a href="products">Products</a></div>
-            <div><a href="nutrition">Nutrition</a></div>
-            <div><a href="contact">Contact</a></div>
+            <div><a href="/products">Products</a></div>
+            <div><a href="/nutrition">Nutrition</a></div>
+            <div><a href="/contact">Contact</a></div>
         </div>
     </div>
 </div>
@@ -67,11 +81,13 @@
         top: -2px;
         height: 101vh;
         height: 101dvh;
-        width: 300px;
+        width: 300px; /**300px after load*/
         background-color: #000000;
         z-index: 200;
         border-left: 2px solid black;
         overflow: scroll;
+        transition: 100ms ease-out;
+        transform: translateX(100%);
     }
     .top{
         display: flex;
@@ -140,10 +156,6 @@
 		.mobile-menu-button{
 			display: block;
 		}
-
-		.menu-flex{
-			display: none;
-		}
 	}
 	.cart-user .mobile-menu-button:focus .mobile-menu{
 		height: 140vh;
@@ -170,4 +182,8 @@
 		width: 100%;
 		background-color: white; 
 	}
+    .mobile-menu a{
+        color: white;
+        text-decoration: none;
+    }
 </style>

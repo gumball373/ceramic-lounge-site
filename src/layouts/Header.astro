@@ -57,6 +57,12 @@ import Cart from "../components/cart.svelte";
 		align-items: center;
 	}
 
+    @media only screen and (max-width: 900px){
+		.menu-flex{
+			display: none;
+		}
+	}
+
 	.menu-flex div{
 		cursor: pointer;
 		padding: 8px 5px;
@@ -140,24 +146,32 @@ import Cart from "../components/cart.svelte";
 </style>
 <script is:inline>
 	function addToCart(src, alt, name, price, priceID){
+        
+        let cartContainer = document.getElementById('cartContainer');
+        
         // add it to the list of hash maps
-        var cartData = JSON.parse(localStorage.getItem("cart"));
+        if(localStorage.getItem('cart') == true){
+            localStorage.removeItem('cart');
+        }
+        var cartData = JSON.parse(localStorage.getItem('cart'));
         if (cartData == null){
-            cartData = {};
+            cartData = JSON.parse('{}');
+            cartData[name] = JSON.parse('{}');
         }
         if(cartData[name] != null && document.getElementById('cart-'+name) != null){
             cartData[name].quantity += 1;
             var node = document.getElementById('cart-'+name)
             node.querySelector('.cart-quantity').textContent = cartData[name].quantity;
             localStorage.setItem('cart', JSON.stringify(cartData));
-            console.log(localStorage.getItem('cart'));
             return;
         }
-
-        cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': 1};
-        localStorage.setItem('cart', JSON.stringify(cartData));
+        if(cartData[name] != null && document.getElementById('cart-'+name) == null){
+            cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': cartData[name].quantity};
+        } else {
+            cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': 1};
+        }
         
-        console.log(localStorage.getItem('cart'));
+        localStorage.setItem('cart', JSON.stringify(cartData));
 
         //build it on the fly, ugh
         var container = document.createElement('div');
@@ -192,7 +206,7 @@ import Cart from "../components/cart.svelte";
 
         //add remove click event
         remove.addEventListener('click', () => {
-            removeFromCart(container);
+            removeFromCart(name);
         })
 
         //build DOM Structure
@@ -206,13 +220,21 @@ import Cart from "../components/cart.svelte";
         info.appendChild(quantityEl);
         product.append(remove);
 
+        // console.log(cartContainer);
+
         //add it to the cart
         cartContainer.appendChild(container);
+
+        // document.getElementById('cartContainer') = cartContainer;
     }
 
-    function removeFromCart(node){
+    function removeFromCart(name){
         let cartData = localStorage.getItem('cart');
-        
-        node.remove();
+        cartData = JSON.parse(cartData);
+        delete cartData[name];
+
+        document.getElementById('cart-'+name).remove();
+
+        localStorage.setItem('cart', JSON.stringify(cartData));
     }
 </script>
