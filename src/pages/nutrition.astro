@@ -1,24 +1,27 @@
 ---
 import Header from "../layouts/Header.astro";
 import Footer from "../layouts/Footer.astro";
+import Layout from "../layouts/Layout.astro"
 ---
 
-<Header></Header>
-<main>
-    <div class="container">
-        <img class="title-pic" src="/nutrition-svg.svg" alt="Nutrition"/>
-        <div class="subtitle">This is required by law, no styles for you.</div>
-        <div class="lbl-container">
-            <div class="label"></div>
-            <div class="lbl-txt">txt lol, dems is some dark roast</div>
+<Layout title="Ceramic Lounge Nutrition">
+    <Header></Header>
+    <main>
+        <div class="container">
+            <img class="title-pic" src="/nutrition-svg.svg" alt="Nutrition"/>
+            <div class="subtitle">This is required by law, no styles for you.</div>
+            <div class="lbl-container">
+                <div class="label"></div>
+                <div class="lbl-txt">txt lol, dems is some dark roast</div>
+            </div>
+            <div class="lbl-container">
+                <div class="label"></div>
+                <div class="lbl-txt">txt lol, dat deres some light roast</div>
+            </div>
         </div>
-        <div class="lbl-container">
-            <div class="label"></div>
-            <div class="lbl-txt">txt lol, dat deres some light roast</div>
-        </div>
-    </div>
-</main>
-<Footer></Footer>
+    </main>
+    <Footer></Footer>
+</Layout>
 
 <style is:global>
     main{

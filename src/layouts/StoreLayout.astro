@@ -16,7 +16,7 @@ var tabIndexx = 9;
         <div class="grids coffee">
             {
                 coffeeProds.filter((product, idx) => idx < itemMax).map((product) => (
-                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                    <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
                         <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
@@ -45,7 +45,7 @@ var tabIndexx = 9;
                             </div>
                             <div class="title">{product.frontmatter.name}</div>
                             <div class="text">{product.frontmatter.description}</div>
-                            <div class="buy-now-container"><div data-priceID={product.frontmatter.priceID} class="buy-now" onclick="">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                            <div class="buy-now-container"><div class="buy-now" onclick="">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
                         </div>
                     </div>
                 ))
@@ -54,7 +54,7 @@ var tabIndexx = 9;
         <div class="grids stickers">
             {
                 stickerProds.filter((product, idx) => idx < itemMax).map((product) => (
-                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                    <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
                         <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
@@ -92,7 +92,7 @@ var tabIndexx = 9;
         <div class="grids more">
             {
                 moreProds.filter((product, idx) => idx < itemMax).map((product) => (
-                    <div prod-item class="prod" tabindex={tabIndexx++}>
+                    <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
                         <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
@@ -354,15 +354,43 @@ var tabIndexx = 9;
         position: absolute;
         bottom: 0;
         right: 0;
-        width: 30%;
+        width: max(31%, 50px);
         background-color: #AC0000;
         height: 20px;
         text-align: center;
         padding-top: 2px;
         border-bottom-right-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        user-select: none;
     }
     .price span{
         position: relative;
+        user-select: none;
+    }
+
+    @media only screen and (max-width: 475px){
+        .price{
+            font-size: 12px;
+            width: max(31%, 53px);
+        }
+
+        .prod h{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 56px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .prod p{
+            display: none;
+        }
     }
 
     .price:hover span,
@@ -477,6 +505,7 @@ var tabIndexx = 9;
         background: #AC0000;
         font-weight: 700;
         cursor: pointer !important;
+        user-select: none;
     }
     .container:has(#Stickers:checked) .stickers{
         display: flex;
@@ -488,3 +517,28 @@ var tabIndexx = 9;
         display: flex;
     }
 </style>
+<script>
+    const prods = document.querySelectorAll(
+        "[prod-item]"
+    ) as NodeListOf<HTMLElement>;
+
+    prods.forEach((prod) => {
+        var buyNow = prod.querySelector('.price')
+        var bigBuyNow = prod.querySelector('.buy-now');
+
+        var src = prod.querySelector('img').getAttribute('src').valueOf();
+        var alt = prod.querySelector('img').getAttribute('alt').valueOf();
+        var name = prod.querySelector('h').textContent;
+        var price = prod.querySelector('span').textContent;
+        var priceID = prod.getAttribute('data-priceID');
+
+        // console.log(priceID);
+
+        buyNow.addEventListener("click", () => {
+            addToCart(src,alt,name,price,priceID)
+        });
+        bigBuyNow.addEventListener("click", () => {
+            addToCart(src,alt,name,price,priceID)
+        });
+    });
+</script>

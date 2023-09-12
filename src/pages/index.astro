@@ -5,7 +5,6 @@ import StoreLayout from '../layouts/StoreLayout.astro';
 import GridSection from '../layouts/GridSection.astro';
 import Jarmodel from '../layouts/3dmodel.astro';
 import Radio from '../layouts/Radio.astro';
-import Cart from '../components/cart.svelte';
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
 ---
@@ -33,7 +32,7 @@ import Footer from '../layouts/Footer.astro';
 	}
 
 	main {
-		padding: 50px;
+		padding: min(10%, 50px);
 		-webkit-mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent);
 		mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent);
         background-image: url("/garage2-min-min.webp");

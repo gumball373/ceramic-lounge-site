@@ -1,42 +1,44 @@
 ---
 import Header from "../layouts/Header.astro";
 import Footer from "../layouts/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 ---
-
-<Header></Header>
-<main>
-    <div class="container">
-        <div class="contact"><img src="/contact-svg.svg" alt="Contact"/>
-            <div class="subtitle">Reach out to us if you have questions about events,<br>partnerships, or event hosting.</div>
-        </div>
-        <div class="text">
-            Email:<br>
-            CeramicLoungeCoffee@gmail.com
-        </div>
-        <div class="text">
-            Social Media:<br>
-        </div>
-        <div class="sm-flex">
-            <div>
-                <div class="circle"><div class="sm-text">Festigral</div></div>
+<Layout title="Ceramic Lounge Contact">
+    <Header></Header>
+    <main>
+        <div class="container">
+            <div class="contact"><img src="/contact-svg.svg" alt="Contact"/>
+                <div class="subtitle">Reach out to us if you have questions about events,<br>partnerships, or event hosting.</div>
             </div>
-            <div>
-                <div class="circle"><div class="sm-text">Youtube</div></div>
+            <div class="text">
+                Email:<br>
+                CeramicLoungeCoffee@gmail.com
             </div>
-            <div>
-                <div class="circle"><div class="sm-text">Instagram</div></div>
+            <div class="text">
+                Social Media:<br>
             </div>
-            <div>
-                <div class="circle"><div class="sm-text">Tiktok</div></div>
+            <div class="sm-flex">
+                <div>
+                    <div class="circle"><div class="sm-text">Festigral</div></div>
+                </div>
+                <div>
+                    <div class="circle"><div class="sm-text">Youtube</div></div>
+                </div>
+                <div>
+                    <div class="circle"><div class="sm-text">Instagram</div></div>
+                </div>
+                <div>
+                    <div class="circle"><div class="sm-text">Tiktok</div></div>
+                </div>
+            </div>
+            <div class="text">
+                Events:<br>
+                <u>Check Out Our Calendar</u>
             </div>
         </div>
-        <div class="text">
-            Events:<br>
-            <u>Check Out Our Calendar</u>
-        </div>
-    </div>
-</main>
-<Footer></Footer>
+    </main>
+    <Footer></Footer>
+</Layout>
 
 <style is:global>
     main{

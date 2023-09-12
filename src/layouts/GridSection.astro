@@ -39,7 +39,7 @@ var tabIndexx = 30;
         </div>
 
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="OUR TEAM"
-            data-image="/many-calipers.webp" data-infoText="Our team is a small group of enthusiasts who want to do nothing more than create the spaces we all dreamed of as kids. A place to go and engage with other car guys, and a place to hold consistent events for the community to enjoy.">
+            data-image="/many-calipers.webp" data-infoText="Our team is a small group of enthusiasts who want to do nothing more than create the spaces we all dreamed of as kids. A place to go and engage with other car enthusiasts, and a place to hold consistent events for the community to enjoy.">
             <div>
                 OUR TEAM
             </div>
@@ -94,7 +94,7 @@ var tabIndexx = 30;
         gap: 10px;
         transform: rotate3d(12,30,-5,23deg) translateX(-5vw);
         z-index: 4;
-        margin-bottom: 15px;
+        margin-bottom: 175px;
     }
     .grid-items{
         border: 2px solid white;
@@ -142,7 +142,10 @@ var tabIndexx = 30;
     }
     .grid-items:nth-child(4){
         /* 2 x 6 */
-        padding: 15px;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         grid-row: 3 / 5;
         grid-column: 14 / 20;
         font-weight: 700;
@@ -221,6 +224,7 @@ var tabIndexx = 30;
         .big-grid{
             grid-template-rows: repeat(17, 32px);
             transform: rotate3d(1,55,-5,23deg) translateX(-8vw);
+            padding-top: 3%;
         }
         .grid-items:nth-child(2){
             grid-row: 5/8;
@@ -290,8 +294,12 @@ var tabIndexx = 30;
 
     @media only screen and (max-width: 675px){
         .big-grid{
-            transform: rotate3d(-11,83,-5,23deg) translateX(-10vw);
+            transform: rotate3d(-11,83,-5,23deg) translateX(-13vw);
             grid-template-rows: repeat(24, 32px);
+            padding-top: 5%;
+        }
+        .block-quote{
+            padding: 10px 0 !important;
         }
         .grid-items:nth-child(1){
             grid-row: 3/5;
@@ -332,6 +340,15 @@ var tabIndexx = 30;
         .grid-items:nth-child(10){
             grid-row: 10/11;
             grid-column: 6/10;
+        }
+    }
+
+    @media only screen and (max-width: 475px){
+        .big-grid{
+            grid-template-rows: repeat(21, 7vw);
+            grid-template-columns: repeat(11, 8vw);
+            padding-top: 9%;
+            margin-bottom: 130%;
         }
     }
 
@@ -391,6 +408,7 @@ var tabIndexx = 30;
         right: 5px;
         top: 5px;
         cursor: pointer;
+        user-select: none;
     }
 </style>
 <script>

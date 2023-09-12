@@ -1,52 +1,10 @@
-<script setup>
-    import { onMount } from "svelte";
+---
+import ClientCart from "./ClientCart.svelte";
+---
 
-    let visible = true;
-
-    let cart;
-    let cartContainer;
-
-    onMount(() => {
-        if(!visible){
-            toggleVissible()
-        }
-        // localStorage.removeItem('cart')
-        let cart = localStorage.getItem('cart');
-        let cartData = JSON.parse(cart);
-
-        for (var [key, value] of Object.entries(cartData)) {
-            addToCart(value.src, value.alt, value.name, value.price, value.priceID);
-        }
-
-        try{
-            refresh();
-        } catch {
-
-        }
-    })
-
-    function toggleVissible() {
-        if(cartContainer.style.transform == 'translateX(0%)'){
-            // cartContainer.style.width = "0px"
-            cartContainer.style.transform = 'translateX(100%)'
-        } else {
-            // cartContainer.style.width = "300px"
-            cartContainer.style.transform = 'translateX(0%)'
-        }
-    }
-</script>
 <div class="cart-user">
-    <!-- svelte-ignore a11y-positive-tabindex -->
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <img tabindex="6" src="/user-icon.svg" alt="user">
-    <!-- svelte-ignore a11y-positive-tabindex -->
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <img tabindex="7" src="/shopping-cart-icon.svg" alt="cart" on:click={toggleVissible}>
-    <!-- svelte-ignore a11y-positive-tabindex -->
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+    <img tabindex="7" src="/shopping-cart-icon.svg" alt="cart" onclick='toggleVissible()'>
     <div class="mobile-menu-button" tabindex="9">
         <div class="mobile-menu">
             <div><a href="/">Home</a></div>
@@ -56,21 +14,16 @@
         </div>
     </div>
 </div>
-{#if visible}
-<div bind:this={cart} id="cart">
-    <div bind:this={cartContainer} id="cartContainer" class="container">
+<div id="">
+    <div id="cart" class="container">
         <div class="top">
-            <div class="title">Shopping Cart</div>
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div on:click={toggleVissible} class="close">X</div>
+           <div class="title">Shopping Cart</div>
+            <div onclick=';toggleVissible();' class="close">X</div>
         </div>
-        <button on:click={() => addToCart('/10mm.png', '10mm', '10mm', '12.99', 'price_JKnKNllckdlkDNSI_zusyl')}></button>
-        <div class="checkout">Checkout</div>
+        <ClientCart client:only="svelte"></ClientCart>
+        <div id="checkout" class="checkout">Checkout</div>
     </div>
 </div>
-{/if}
-
 <style>
     .title{
         padding: 16px 10px;
@@ -79,15 +32,13 @@
         position: absolute;
         right: 0;
         top: -2px;
-        height: 101vh;
-        height: 101dvh;
-        width: 300px; /**300px after load*/
+        height: 0vh;
+        width: 300px;
         background-color: #000000;
         z-index: 200;
         border-left: 2px solid black;
         overflow: scroll;
-        transition: 100ms ease-out;
-        transform: translateX(100%);
+        transition: 200ms ease-out;
     }
     .top{
         display: flex;
@@ -101,6 +52,7 @@
         font-weight: 700;
         cursor: pointer;
         background-color: #00000025;
+        user-select: none;
     }
     .checkout{
         position: absolute;
@@ -115,6 +67,7 @@
         flex-direction: column;
         justify-content: center;
         cursor: pointer;
+        user-select: none;
     }
     .cart-user{
 		position: absolute;
@@ -187,3 +140,54 @@
         text-decoration: none;
     }
 </style>
+<script>
+    // import {loadStripe} from '@stripe/stripe-js/pure';
+
+    var checkoutButton = document.getElementById('checkout');
+    checkoutButton.addEventListener('click', (e) => {
+        checkout();
+    })
+
+    async function checkout(){
+        // Stripe.js will not be loaded until `loadStripe` is called
+        // const stripeLoader = await loadStripe('pk_test_51NgZWICJynSxb88wGAxGkfHYLBakpGrrAt8n0Gn58Gmi40G3zErgl6sSpMqmyyTZNbwFlKp42a9JXEr5DWSOqIfh00KIoabVs0');
+        // const stripeClient = await stripeLoader; //this is for stripejs, using ssr stripe rn
+
+        let cartContainer = document.querySelector('#cartContainer')
+        let lineItems = []; 
+
+        if(cartContainer == null){ console.log('svelte dumbass')}
+
+        let prods = cartContainer.querySelectorAll('.cart-product') as NodeListOf<HTMLElement>;
+        if(prods.length < 1) { return; }
+
+        prods.forEach(prod => {
+            var item = {price : prod.getAttribute('data-priceID'), quantity : prod.querySelector('.cart-quantity').textContent};
+            lineItems.push(item);
+        });
+
+        console.log(JSON.stringify(lineItems));
+
+        //returns a redirect, so it should just dip from here
+        await fetch('api/stripe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body : JSON.stringify(lineItems) 
+        });
+    }
+</script>
+<script is:inline>
+    var cart = document.getElementById('cart');
+
+    function toggleVissible() {
+        if(cart.style.height == '100vh'){
+            // cartContainer.style.width = "0px"
+            cart.style.height = '0vh'
+        } else {
+            // cartContainer.style.width = "300px"
+            cart.style.height = '100vh'
+        }
+    }
+</script>

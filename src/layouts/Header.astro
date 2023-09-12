@@ -1,5 +1,5 @@
 ---
-import Cart from "../components/cart.svelte";
+import Cart from "../components/cart.astro";
 ---
 
 <header>
@@ -11,8 +11,8 @@ import Cart from "../components/cart.svelte";
 			<a tabindex="4" href="/contact"><div>Contact</div></a>
 			<!-- tabIndex 5 reserved for hidden menu, when dispaly none is active, shouldn't affect normal traversal -->
 		</div>
-		<img class="main-logo" src="/head-logo.png" alt="main-logo" onclick="location.replace('index');">
-		<Cart client:only="svelte"></Cart>
+		<img class="main-logo" src="/head-logo.png" alt="main-logo" onclick="location.replace('/');">
+		<Cart></Cart>
 	</div>
 </header>
 <style>
@@ -20,8 +20,10 @@ import Cart from "../components/cart.svelte";
 		background-color: #AC0000;
 		height: 40px;
 		padding: 2px 0px;
-		position: sticky;
+		position: fixed;
 		top:0;
+        left: 0;
+        right: 0;
 		z-index: 99;
 	}
 
@@ -87,6 +89,13 @@ import Cart from "../components/cart.svelte";
 		text-decoration: none;
 		color: white;
 	}
+
+    @media only screen and (max-width: 500px){
+        .main-logo{
+            left: 5px;
+            transform: none;
+        }
+    }
 </style>
 <style is:inline>
     /************* START STYLING CART CARD FOR NEWLY BUILT PRODUCTS *************/
@@ -94,7 +103,7 @@ import Cart from "../components/cart.svelte";
         height: 50px;
         /* background-color: grey; */
         border: 2px solid black;
-        border-radius: 10px;
+        border-radius: 8px;
         display: grid;
         grid-template-columns: 50px auto 30px;
         margin: 5px;
@@ -120,8 +129,19 @@ import Cart from "../components/cart.svelte";
         padding-left: 5px
     }
 	.cart-quantity{
-		padding: 16px;
+		/* padding: 16px; */
 	}
+    .cart-quantity-flex{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin-right: 10px;
+    }
+    .cart-quantity-flex :not(:nth-child(2)){
+        font-weight: 700;
+        cursor: pointer;
+        user-select: none;
+    }
     .cart-remove{
         border: 2px solid red;
         border-left: 2px solid transparent;
@@ -150,10 +170,10 @@ import Cart from "../components/cart.svelte";
         let cartContainer = document.getElementById('cartContainer');
         
         // add it to the list of hash maps
-        if(localStorage.getItem('cart') == true){
-            localStorage.removeItem('cart');
+        if(localStorage.getItem('cl-stripe-cart') == true){
+            localStorage.removeItem('cl-stripe-cart');
         }
-        var cartData = JSON.parse(localStorage.getItem('cart'));
+        var cartData = JSON.parse(localStorage.getItem('cl-stripe-cart'));
         if (cartData == null){
             cartData = JSON.parse('{}');
             cartData[name] = JSON.parse('{}');
@@ -162,7 +182,7 @@ import Cart from "../components/cart.svelte";
             cartData[name].quantity += 1;
             var node = document.getElementById('cart-'+name)
             node.querySelector('.cart-quantity').textContent = cartData[name].quantity;
-            localStorage.setItem('cart', JSON.stringify(cartData));
+            localStorage.setItem('cl-stripe-cart', JSON.stringify(cartData));
             return;
         }
         if(cartData[name] != null && document.getElementById('cart-'+name) == null){
@@ -171,7 +191,7 @@ import Cart from "../components/cart.svelte";
             cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': 1};
         }
         
-        localStorage.setItem('cart', JSON.stringify(cartData));
+        localStorage.setItem('cl-stripe-cart', JSON.stringify(cartData));
 
         //build it on the fly, ugh
         var container = document.createElement('div');
@@ -182,6 +202,9 @@ import Cart from "../components/cart.svelte";
         var nameEl = document.createElement('div');
         var priceEl = document.createElement('div');
         var quantityEl = document.createElement('div');
+        var quantityFlex = document.createElement('div');
+        var increment = document.createElement('div');
+        var decrement = document.createElement('div');
         var remove = document.createElement('div');
 
         //image props
@@ -195,6 +218,8 @@ import Cart from "../components/cart.svelte";
         product.setAttribute('data-priceID', priceID);
         remove.textContent = 'X';
         quantityEl.textContent = cartData[name].quantity;
+        increment.textContent = '+';
+        decrement.textContent = '-';
 
         //add styling
         product.classList = 'cart-product';
@@ -203,11 +228,20 @@ import Cart from "../components/cart.svelte";
         priceEl.classList = 'cart-price';
         remove.classList = 'cart-remove';
         quantityEl.classList = 'cart-quantity';
+        quantityFlex.classList = 'cart-quantity-flex';
 
-        //add remove click event
+        //add click events
         remove.addEventListener('click', () => {
             removeFromCart(name);
-        })
+        });
+
+        increment.addEventListener('click', () => {
+            cartQuantityIncrement(name, true);
+        });
+
+        decrement.addEventListener('click', () => {
+            cartQuantityIncrement(name, false);
+        });
 
         //build DOM Structure
         container.appendChild(product);
@@ -217,7 +251,10 @@ import Cart from "../components/cart.svelte";
         info2.appendChild(nameEl);
         info2.appendChild(priceEl);
         info.appendChild(info2);
-        info.appendChild(quantityEl);
+        quantityFlex.appendChild(decrement);
+        quantityFlex.appendChild(quantityEl);
+        quantityFlex.appendChild(increment);
+        info.appendChild(quantityFlex);
         product.append(remove);
 
         // console.log(cartContainer);
@@ -229,12 +266,23 @@ import Cart from "../components/cart.svelte";
     }
 
     function removeFromCart(name){
-        let cartData = localStorage.getItem('cart');
+        let cartData = localStorage.getItem('cl-stripe-cart');
         cartData = JSON.parse(cartData);
         delete cartData[name];
 
         document.getElementById('cart-'+name).remove();
 
-        localStorage.setItem('cart', JSON.stringify(cartData));
+        localStorage.setItem('cl-stripe-cart', JSON.stringify(cartData));
+    }
+    function cartQuantityIncrement(name, bool){
+        var quantity = document.getElementById('cart-'+name).querySelector('.cart-quantity');
+        var quantityNum = quantity.textContent - 0;
+
+        if(bool){
+            quantity.textContent = quantityNum - (-1);
+        } else {
+            if(quantityNum <= 1) return;
+            quantity.textContent = quantityNum - 1;
+        }
     }
 </script>

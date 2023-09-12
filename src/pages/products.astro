@@ -2,19 +2,22 @@
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
 import StoreLayout from '../layouts/StoreLayout.astro';
+import Layout from "../layouts/Layout.astro"
 ---
 
-<Header></Header>
-    <main class="store">
+<Layout title='Cermic Lounge Store'>
+	<Header></Header>
+	<main class="store">
 		<div class="title-container">
 			<img class="title-pic" src="/products-svg.svg" alt="Products">
 			<div class="subtitle"> Check out all our goodies, from coffee to car stickers, we've got the fix.<br>
 				Also dont forget to check out our coffee lineups for a variety of flavors
 			</div>
 		</div>
-        <StoreLayout></StoreLayout>
-    </main>
-<Footer></Footer>
+		<StoreLayout></StoreLayout>
+	</main>
+	<Footer></Footer>
+</Layout>
 
 <style is:global>
     main{
