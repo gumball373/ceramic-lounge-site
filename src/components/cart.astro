@@ -141,17 +141,12 @@ import ClientCart from "./ClientCart.svelte";
     }
 </style>
 <script>
-    // import {loadStripe} from '@stripe/stripe-js/pure';
-
     var checkoutButton = document.getElementById('checkout');
     checkoutButton.addEventListener('click', (e) => {
         checkout();
     })
 
     async function checkout(){
-        // Stripe.js will not be loaded until `loadStripe` is called
-        // const stripeLoader = await loadStripe('pk_test_51NgZWICJynSxb88wGAxGkfHYLBakpGrrAt8n0Gn58Gmi40G3zErgl6sSpMqmyyTZNbwFlKp42a9JXEr5DWSOqIfh00KIoabVs0');
-        // const stripeClient = await stripeLoader; //this is for stripejs, using ssr stripe rn
 
         let cartContainer = document.querySelector('#cartContainer')
         let lineItems = []; 
@@ -166,16 +161,18 @@ import ClientCart from "./ClientCart.svelte";
             lineItems.push(item);
         });
 
-        console.log(JSON.stringify(lineItems));
-
         //returns a redirect, so it should just dip from here
-        await fetch('api/stripe', {
+        var summ = await fetch('api/stripe', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body : JSON.stringify(lineItems) 
+        body : JSON.stringify(lineItems)
         });
+        
+        // console.log(summ.text());
+        if(summ.status != 303) {console.log(summ.status) }
+        // location.replace(summ.url);
     }
 </script>
 <script is:inline>
