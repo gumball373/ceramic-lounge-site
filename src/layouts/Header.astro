@@ -275,14 +275,19 @@ import Cart from "../components/cart.astro";
         localStorage.setItem('cl-stripe-cart', JSON.stringify(cartData));
     }
     function cartQuantityIncrement(name, bool){
-        var quantity = document.getElementById('cart-'+name).querySelector('.cart-quantity');
-        var quantityNum = quantity.textContent - 0;
+        var cartData = JSON.parse(localStorage.getItem('cl-stripe-cart'));
+        var quantityEl = document.getElementById('cart-'+name).querySelector('.cart-quantity');
+        var quantityNum = quantityEl.textContent - 0;
 
         if(bool){
-            quantity.textContent = quantityNum - (-1);
+            quantityEl.textContent = quantityNum - (-1);
+            cartData[name].quantity = quantityNum - (-1);
         } else {
             if(quantityNum <= 1) return;
-            quantity.textContent = quantityNum - 1;
+            quantityEl.textContent = quantityNum - 1;
+            cartData[name].quantity = quantityNum -1;
         }
+
+        localStorage.setItem('cl-stripe-cart', JSON.stringify(cartData));
     }
 </script>

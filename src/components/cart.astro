@@ -21,7 +21,12 @@ import ClientCart from "./ClientCart.svelte";
             <div onclick=';toggleVissible();' class="close">X</div>
         </div>
         <ClientCart client:only="svelte"></ClientCart>
-        <div id="checkout" class="checkout">Checkout</div>
+        <div class="checkout-flex">
+            <div>
+                We use Stripe&nbsp;Checkout to keep your info safe. You'll be redirected on checkout.
+            </div>
+            <div id="checkout" class="checkout">Checkout</div>
+        </div>
     </div>
 </div>
 <style>
@@ -54,10 +59,17 @@ import ClientCart from "./ClientCart.svelte";
         background-color: #00000025;
         user-select: none;
     }
-    .checkout{
+    .checkout-flex{
         position: absolute;
         bottom: 5px;
         right: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        text-align: right;
+        gap: 12px;
+    }
+    .checkout{
         height: 30px;
         width: 150px;
         background-color: #AC0000;
@@ -141,25 +153,29 @@ import ClientCart from "./ClientCart.svelte";
     }
 </style>
 <script>
+    import {loadStripe} from '@stripe/stripe-js'
     var checkoutButton = document.getElementById('checkout');
     checkoutButton.addEventListener('click', (e) => {
         checkout();
     })
 
     async function checkout(){
+        // Stripe.js will not be loaded until `loadStripe` is called
+        const stripeLoader = await loadStripe(import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
         let cartContainer = document.querySelector('#cartContainer')
-        let lineItems = []; 
-
-        if(cartContainer == null){ console.log('svelte dumbass')}
+        let lineItems = [];
 
         let prods = cartContainer.querySelectorAll('.cart-product') as NodeListOf<HTMLElement>;
         if(prods.length < 1) { return; }
 
         prods.forEach(prod => {
-            var item = {price : prod.getAttribute('data-priceID'), quantity : prod.querySelector('.cart-quantity').textContent};
+            var num:Number = parseInt(prod.querySelector('.cart-quantity').textContent);
+            var item = {price : prod.getAttribute('data-priceID'), quantity : num};
             lineItems.push(item);
         });
+
+        console.log(JSON.stringify(lineItems))
 
         //returns a redirect, so it should just dip from here
         var summ = await fetch('api/stripe', {
@@ -167,12 +183,11 @@ import ClientCart from "./ClientCart.svelte";
         headers: {
             'Content-Type': 'application/json',
         },
-        body : JSON.stringify(lineItems)
+        body: JSON.stringify(lineItems)
         });
+        var response = await summ.json();
         
-        console.log(summ.text());
-        if(summ.status != 303) {console.log(summ.status) }
-        // location.replace(summ.url);
+        location.replace(response.url);
     }
 </script>
 <script is:inline>

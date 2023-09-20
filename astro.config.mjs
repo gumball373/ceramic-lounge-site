@@ -7,5 +7,12 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
   integrations: [svelte()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
+
+  vite: {
+    ssr: {
+      // add your package to the `noExternal` list
+      noExternal: ['ceramic-louge-site']
+    }
+  }
 });

@@ -1,30 +1,82 @@
 import Stripe from "stripe";
+const STRIPE_SECRET_KEY = import.meta.env.STRIPE_SECRET_KEY;
 
-export async function POST({ params, request }) {
+const stripe = new Stripe(STRIPE_SECRET_KEY);
 
-    const STRIPE_SECRET_KEY = await db(import.meta.env.STRIPE_SECRET_KEY);
-    // const STRIPE_PUBLISHABLE_KEY = import.meta.env.STRIPE_PUBLISHABLE_KEY;
-
-    //require('stripe')(STRIPE_SECRET_KEY);
-    const stripe = new Stripe(STRIPE_SECRET_KEY, {
-        apiVersion: '2023-08-16',
-    });
-
-    return new Response(JSON.stringify({message: STRIPE_SECRET_KEY}))
-
+export async function POST({ request }) {
+    
+    const body = await request.json();
+    var session;
     try{
-        const session = await stripe.checkout.sessions.create({
-                line_items: params.body,
+        session = await stripe.checkout.sessions.create({
+          shipping_address_collection: {
+              allowed_countries: ['US'],
+            },
+            shipping_options: [
+                {
+                  shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                      amount: 0,
+                      currency: 'usd',
+                    },
+                    display_name: 'Free shipping',
+                    delivery_estimate: {
+                      minimum: {
+                        unit: 'business_day',
+                        value: 5,
+                      },
+                      maximum: {
+                        unit: 'business_day',
+                        value: 7,
+                      },
+                    },
+                  },
+                }],
                 mode: 'payment',
-                success_url: `${request.headers.origin}/?success=true`,
-                cancel_url: `${request.headers.origin}/?canceled=true`, 
+                line_items: body,
+                success_url: 'http://localhost:4321',
+                cancel_url: 'http://localhost:4321',
+                automatic_tax: {enabled: true}
             });
-            return new Response(JSON.stringify({
-                message: session.url
-              }), {
-                status: 303
-              })
     } catch {
         console.log("checkout session denied");
-    }    
+    }
+
+    return new Response(JSON.stringify({
+      url: session.url
+    }, {
+      status: 303
+    }))
 }
+
+
+          //   , {
+          //     status: 303
+          // }
+
+
+            // shipping_address_collection: {
+            //   allowed_countries: ['US'],
+            // },
+            // shipping_options: [
+            //     {
+            //       shipping_rate_data: {
+            //         type: 'fixed_amount',
+            //         fixed_amount: {
+            //           amount: 0,
+            //           currency: 'usd',
+            //         },
+            //         display_name: 'Free shipping',
+            //         delivery_estimate: {
+            //           minimum: {
+            //             unit: 'business_day',
+            //             value: 5,
+            //           },
+            //           maximum: {
+            //             unit: 'business_day',
+            //             value: 7,
+            //           },
+            //         },
+            //       },
+            //     }],
