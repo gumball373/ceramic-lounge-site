@@ -1,0 +1,106 @@
+---
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="CLC Thank You!">
+    <Header></Header>
+    <main>
+        <div class="container">
+            <div class="thanks-flex">
+                <img class="thanks-for" src="/thanks-for.svg" alt=""></img>
+                <img class="your-order" src="/your-order.svg" alt=""></img>
+            </div>
+            <div class="order"> Order Number: xx-xxx-xxx</div>
+            <div class="calendar"> Still interested? Check out our <u data-link="/calendar">calendar.</u></div>
+            <div>or, <u data-link="/">go back to the homepage.</u></div>
+        </div>
+    </main>
+    <Footer></Footer>
+</Layout>
+
+<style is:global>
+    
+    
+	:root {
+		/* vars go here */
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: black;
+		color: white;
+		font-family: 'Courier New', Courier, monospace;
+		overflow-x: hidden;
+	}
+
+    body{
+        margin: 0;
+    }
+
+	::-webkit-scrollbar{
+    width: 12px;
+	}
+	::-webkit-scrollbar-thumb{
+    background: black;
+	border: 2px solid white;
+	}
+	::-webkit-scrollbar-corner{
+		background-color: black;
+	}
+</style>
+<style>
+    main{
+        min-height: 79vh;
+    }
+    .container{
+        background: url("/thank-you-page.webp");
+        background-size: cover;
+        background-position: right;
+        margin-top: 44px;
+        padding-top: 30px;
+        -webkit-mask-image: linear-gradient(to bottom, black 0%, black 98%, transparent);
+		mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
+        aspect-ratio: 16/10;
+        width: 100%;
+        min-height: 78vh;
+    }
+    .container *{
+        text-align: center;
+    }
+    .thanks-flex{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .thanks-for{
+        /* height: 90px; */
+        width: min(600px, 75vw);
+    }
+    .your-order{
+        width: min(600px, 75vw);
+    }
+    .order{
+        margin-top: 180px;
+    }
+    .calendar{
+        margin-top: 30px;
+    }
+    u{
+        cursor: pointer;
+        color: yellow;
+    }
+</style>
+<script>
+    var customLinks = document.querySelectorAll('u');
+
+    customLinks.forEach((item) => {
+        var link = item.getAttribute('data-link').valueOf();
+        item.addEventListener('click', () => {
+        {
+            location.replace(link);
+        }
+        })
+    })
+</script>

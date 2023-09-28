@@ -1,11 +1,10 @@
 ---
-import Header from "../layouts/Header.astro";
-import Footer from "../layouts/Footer.astro";
 import Layout from "../layouts/Layout.astro"
+import TopSpacer from "../components/topSpacer.astro";
 ---
 
 <Layout title="Ceramic Lounge Nutrition">
-    <Header></Header>
+	<TopSpacer></TopSpacer>
     <main>
         <div class="container">
             <img class="title-pic" src="/nutrition-svg.svg" alt="Nutrition"/>
@@ -20,7 +19,6 @@ import Layout from "../layouts/Layout.astro"
             </div>
         </div>
     </main>
-    <Footer></Footer>
 </Layout>
 
 <style is:global>
@@ -66,7 +64,7 @@ import Layout from "../layouts/Layout.astro"
 
     .title-pic{
         height: 60px;
-        margin: 65px 0 0 0;
+		max-width: 80%;
     }
 
     .subtitle{
@@ -75,9 +73,12 @@ import Layout from "../layouts/Layout.astro"
 
     .lbl-container{
         display: flex;
-        gap: 25px;
+        flex-direction: column-reverse;
+        gap: 13px;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
+        margin-bottom: 37px;
     }
 
     .label{

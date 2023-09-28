@@ -391,6 +391,22 @@ var tabIndexx = 9;
         .prod p{
             display: none;
         }
+
+        .tab-flex{
+            flex-direction: column;
+            margin: 8px;
+            margin-bottom: 15px;
+        }
+        .tab-flex label{
+            border-radius: 3px;
+            border: none;
+            box-shadow: 0px 0px 4px white;
+            padding: 8px;
+        }
+
+        .tab-flex label:has(input:checked){
+            border: 2px solid white;
+        }
     }
 
     .price:hover span,

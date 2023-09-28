@@ -1,14 +1,14 @@
 ---
-import Header from "../layouts/Header.astro";
-import Footer from "../layouts/Footer.astro";
+import TopSpacer from "../components/topSpacer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout title="Ceramic Lounge Contact">
-    <Header></Header>
+	<TopSpacer></TopSpacer>
     <main>
         <div class="container">
-            <div class="contact"><img src="/contact-svg.svg" alt="Contact"/>
-                <div class="subtitle">Reach out to us if you have questions about events,<br>partnerships, or event hosting.</div>
+            <div class="contact">
+                <img src="/contact-svg.svg" alt="Contact"/>
+                <div class="subtitle">Reach out to us if you have questions about events,&nbsp;partnerships, or event hosting.</div>
             </div>
             <div class="text">
                 Email:<br>
@@ -31,13 +31,12 @@ import Layout from "../layouts/Layout.astro";
                     <div class="circle"><div class="sm-text">Tiktok</div></div>
                 </div>
             </div>
-            <div class="text">
-                Events:<br>
-                <u>Check Out Our Calendar</u>
+            <div class="text link">
+                <t data-link="/calendar">Events</t><br> 
+                <u data-link="/calendar">Check Out Our Calendar</u>
             </div>
         </div>
     </main>
-    <Footer></Footer>
 </Layout>
 
 <style is:global>
@@ -81,10 +80,11 @@ import Layout from "../layouts/Layout.astro";
         min-height: 82vh;
     }
     .contact{
-        padding: 65px 0 0 0;
+        padding: 0px 0 65px 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 15px;
     }
     .subtitle{
@@ -93,6 +93,7 @@ import Layout from "../layouts/Layout.astro";
     }
     .contact img{
         height: 60px;
+		max-width: 80%;
     }
     .text{
         text-align: center;
@@ -104,6 +105,9 @@ import Layout from "../layouts/Layout.astro";
         gap: 40px;
         margin-top: -25px;
         padding-bottom: 70px;
+        max-width: 60%;
+        flex-wrap: wrap;
+        margin: 0 auto;
     }
     .sm-flex > div{
         display: flex;
@@ -133,5 +137,22 @@ import Layout from "../layouts/Layout.astro";
     u{
         cursor: pointer;
         color: yellow;
+        user-select: none;
+    }
+    .link{
+        cursor: pointer;
+        user-select: none;
     }
 </style>
+<script>
+    var customLinks = document.querySelectorAll('[data-link]');
+
+    customLinks.forEach((item) => {
+        var link = item.getAttribute('data-link').valueOf();
+        item.addEventListener('click', () => {
+        {
+            location.replace(link);
+        }
+        })
+    })
+</script>

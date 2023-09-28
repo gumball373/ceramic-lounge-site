@@ -1,12 +1,11 @@
 ---
-import Header from '../layouts/Header.astro';
-import Footer from '../layouts/Footer.astro';
 import StoreLayout from '../layouts/StoreLayout.astro';
 import Layout from "../layouts/Layout.astro"
+import TopSpacer from '../components/topSpacer.astro';
 ---
 
 <Layout title='Cermic Lounge Store'>
-	<Header></Header>
+	<TopSpacer></TopSpacer>
 	<main class="store">
 		<div class="title-container">
 			<img class="title-pic" src="/products-svg.svg" alt="Products">
@@ -16,7 +15,6 @@ import Layout from "../layouts/Layout.astro"
 		</div>
 		<StoreLayout></StoreLayout>
 	</main>
-	<Footer></Footer>
 </Layout>
 
 <style is:global>
@@ -61,7 +59,7 @@ import Layout from "../layouts/Layout.astro"
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 65px 0 0 0;
+		padding: 44px 0 0 0;
 		text-align: center;
 		gap: 20px;
 	}
@@ -72,5 +70,6 @@ import Layout from "../layouts/Layout.astro"
 
 	.title-pic{
 		height: 60px;
+		max-width: 80%;
 	}
 </style>

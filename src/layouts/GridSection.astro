@@ -157,6 +157,7 @@ var tabIndexx = 30;
         grid-column: 2 / 5;
         background-image: url("/festigral-logo-mini.png");
         background-size: cover;
+        background-position: left;
     }
     .grid-items:nth-child(6){
         /* 3 x 5 */
@@ -365,13 +366,11 @@ var tabIndexx = 30;
     }
     .info-section > div{
         position: inherit;
-        top: 50%;
+        top: 12%;
         right: 10%;
-        width: min(400px, 80%);
-        height: 80%;
-        transform: translateY(-50%);
+        width: min(400px, 90%);
+        min-height: 400px;
         background-color: black;
-        /* border: 2px solid white; */
         box-shadow: 0px 0px 25px white;
         border-radius: 5px;
         font-weight: 700;
@@ -387,8 +386,9 @@ var tabIndexx = 30;
     }
     .info-block{
         position: relative;
-        display: grid;
-        grid-template-rows: 10% 40% auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap:5px;
     }
     .info-block .info-title{
@@ -398,6 +398,8 @@ var tabIndexx = 30;
     }
     .info-block .photo{
         background-size: cover;
+        height: 30vh;
+        width: 100%;
     }
     .info-block .text{
         padding: 10px;
@@ -409,6 +411,12 @@ var tabIndexx = 30;
         top: 5px;
         cursor: pointer;
         user-select: none;
+    }
+    @media only screen and (max-width: 605px){
+        .info-section > div{
+            right: 50%;
+            transform: translateX(50%);
+        }
     }
 </style>
 <script>

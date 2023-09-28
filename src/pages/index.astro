@@ -3,14 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import HeroSection from '../layouts/HeroSection.astro';
 import StoreLayout from '../layouts/StoreLayout.astro';
 import GridSection from '../layouts/GridSection.astro';
-import Jarmodel from '../layouts/3dmodel.astro';
 import Radio from '../layouts/Radio.astro';
-import Header from '../layouts/Header.astro';
-import Footer from '../layouts/Footer.astro';
 ---
 
 <Layout title="The Ceramic Lounge">
-	<Header></Header>
 	<HeroSection></HeroSection>
 	<Radio></Radio>
 	<main>
@@ -18,9 +14,7 @@ import Footer from '../layouts/Footer.astro';
 		<div class="grid-section">
 			<GridSection></GridSection>
 		</div>
-		<Jarmodel></Jarmodel>
 	</main>
-	<Footer></Footer>
 </Layout>
 
 <style>
@@ -37,5 +31,9 @@ import Footer from '../layouts/Footer.astro';
 		mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent);
         background-image: url("/garage2-min-min.webp");
 		background-size: cover;
+		background-position: bottom center;
+	}
+	.grid-section{
+		margin-top: 90px;
 	}
 </style>
