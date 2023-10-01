@@ -3,9 +3,9 @@ import TopSpacer from "../components/topSpacer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout title="Ceramic Lounge Contact">
-	<TopSpacer></TopSpacer>
     <main>
         <div class="container">
+            <TopSpacer></TopSpacer>
             <div class="contact">
                 <img src="/contact-svg.svg" alt="Contact"/>
                 <div class="subtitle">Reach out to us if you have questions about events,&nbsp;partnerships, or event hosting.</div>
@@ -75,7 +75,7 @@ import Layout from "../layouts/Layout.astro";
     .container{
         background: url("/concrete.webp");
         background-size: cover;
-        -webkit-mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent);
 		mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
         min-height: 82vh;
     }
@@ -90,6 +90,7 @@ import Layout from "../layouts/Layout.astro";
     .subtitle{
         margin-bottom: 50px;
         text-align: center;
+        max-width: 85%;
     }
     .contact img{
         height: 60px;

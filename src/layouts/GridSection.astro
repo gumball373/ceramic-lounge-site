@@ -11,20 +11,21 @@ var tabIndexx = 30;
         </div>
 
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="VISION"
-            data-image="/many-calipers.webp" data-infoText="We aim to create an awesome set of experiencees for car all kinds of car enthusiasts. We want a Cafe wwith consistent events to keep the car scene always thriving. Our plan is to run car shows and sim racing events at the cafe weekly, as well as an awesome social place for people to spend their time at. Come visit us! We appreciate all of your support.">
+            data-image="/many-calipers.webp" data-infoText="We aim to create an awesome set of experiences for car all kinds of car enthusiasts. We want a Cafe with consistent events to help the car scene thrive. Our plan is to run car shows and sim racing events at the cafe weekly, as well as to provide an awesome social place for people to spend their time at. Come and visit us! We appreciate all of your support.">
             <div>OUR VISION</div>
         </div>
 
-        <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="BIG-BOI"
-            data-image="/many-calipers.webp" data-infoText="">
+        <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="EVENTS"
+            data-image="/many-calipers.webp" data-infoText="Ceramic Lounge Events are meant ot be the lifeline of the surrounding car community, fueling passion and thrill within enthusiasts from all around. Check out all of our current and planned events to find a way to get in on the action, we'd love to see you there!">
+            <div>EVENTS</div>
         </div>
 
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="TESTIMONIALS"
-            data-image="/many-calipers.webp" data-infoText="">
+            data-image="/many-calipers.webp" data-infoText="Since day one we've recieved lots of encouragement from our customers who are excited for someone like us to be around. We hope to continue bringing top tier value to the car community 'til the very end. Thanks everyone for all of your support!">
             "Crazy visions I hope to see go public" -Alex
         </div>
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="FESTIGRAL"
-            data-image="/many-calipers.webp" data-infoText="">
+            data-image="/many-calipers.webp" data-infoText="Festigral, brought to you by one of our partners, is an event application meant to provide a unique experience, and solve the issue of 'ghost meets', or car shows listed online that dont happen anymore. Checlout out their irl mini-games on social media.">
 
         </div>
 
@@ -135,10 +136,20 @@ var tabIndexx = 30;
     }
     .grid-items:nth-child(3){
         /* 9x5 */
+        position: relative;
         grid-row: 3 / 8;
         grid-column: 5 / 14;
         background-image: url("/garage.jpg");
         background-size: cover;
+    }
+    .grid-items:nth-child(3) > div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        color: white;
+        font-size: 18pt;
+        padding: 3px 0;
     }
     .grid-items:nth-child(4){
         /* 2 x 6 */
@@ -350,6 +361,10 @@ var tabIndexx = 30;
             grid-template-columns: repeat(11, 8vw);
             padding-top: 9%;
             margin-bottom: 130%;
+        }
+
+        .info-block .info-title{
+            font-size: 150% !important;
         }
     }
 
