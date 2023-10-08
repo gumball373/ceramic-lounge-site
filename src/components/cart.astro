@@ -3,14 +3,14 @@ import ClientCart from "./ClientCart.svelte";
 ---
 
 <div class="cart-user">
-    <img tabindex="6" src="/calendar.svg" alt="calendar" data-link="/calendar">
-    <img tabindex="7" src="/shopping-cart-icon.svg" alt="cart" onclick='toggleVissible()'>
-    <div class="mobile-menu-button" tabindex="9">
+    <img tabindex="5" src="/calendar.svg" alt="calendar" data-link="/calendar">
+    <img tabindex="6" src="/shopping-cart-icon.svg" alt="cart" onclick='toggleVissible()'>
+    <div class="mobile-menu-button" tabindex="7">
         <div class="mobile-menu">
-            <div><a href="/">Home</a></div>
-            <div><a href="/products">Products</a></div>
-            <div><a href="/nutrition">Nutrition</a></div>
-            <div><a href="/contact">Contact</a></div>
+            <div><a tabindex="8" href="/">Home</a></div>
+            <div><a tabindex="9" href="/products">Products</a></div>
+            <div><a tabindex="10" href="/nutrition">Nutrition</a></div>
+            <div><a tabindex="11" href="/contact">Contact</a></div>
         </div>
     </div>
 </div>
@@ -114,6 +114,7 @@ import ClientCart from "./ClientCart.svelte";
 		transition: 150ms;
 	}
 	.mobile-menu-button{
+        display: none;
 		height: 100%;
 		aspect-ratio: 1/1;
 		background-image: url('/burger-icon.svg');
@@ -126,7 +127,8 @@ import ClientCart from "./ClientCart.svelte";
 			display: block;
 		}
 	}
-	.cart-user .mobile-menu-button:focus .mobile-menu{
+	.cart-user .mobile-menu-button:focus .mobile-menu
+    ,.cart-user .mobile-menu:has(:focus){
 		height: 140vh;
 		height: 100dvh;
 	}

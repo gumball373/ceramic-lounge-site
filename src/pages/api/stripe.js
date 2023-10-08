@@ -17,10 +17,10 @@ export async function POST({ request }) {
                   shipping_rate_data: {
                     type: 'fixed_amount',
                     fixed_amount: {
-                      amount: 0,
+                      amount: 699,
                       currency: 'usd',
                     },
-                    display_name: 'Free shipping',
+                    display_name: 'Standard Shipping',
                     delivery_estimate: {
                       minimum: {
                         unit: 'business_day',
@@ -35,8 +35,8 @@ export async function POST({ request }) {
                 }],
                 mode: 'payment',
                 line_items: body,
-                success_url: 'http://localhost:4321',
-                cancel_url: 'http://localhost:4321',
+                success_url: 'http://theceramiclounge.com/success',
+                cancel_url: 'http://theceramiclounge.com',
                 automatic_tax: {enabled: true}
             });
     } catch {

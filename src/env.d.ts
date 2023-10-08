@@ -4,6 +4,7 @@
 interface ImportMetaEnv {
     readonly STRIPE_SECRET_KEY: string;
     readonly PUBLIC_STRIPE_PUBLISHABLE_KEY: string;
+    readonly STRIPE_ENDPOINT_SECRET: string;
     // more env variables...
   }
   

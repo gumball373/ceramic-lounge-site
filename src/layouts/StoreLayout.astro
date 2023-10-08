@@ -3,7 +3,7 @@ const coffeeProds = await Astro.glob("../content/products/coffee/*.md");
 const stickerProds = await Astro.glob("../content/products/stickers/*.md");
 const moreProds = await Astro.glob("../content/products/more/*.md");
 const {itemMax = Infinity} = Astro.props;
-var tabIndexx = 9;
+var tabIndexx = 12;
 ---
 
 <div class="container">
@@ -282,7 +282,7 @@ var tabIndexx = 9;
 
     .prod:hover::after{
         opacity: 1;
-        margin-top: 10px;
+        margin-top: 0px;
     }
 
     .prod::before{
@@ -301,7 +301,7 @@ var tabIndexx = 9;
 
     .prod:hover::before{
         opacity: 1;
-        margin-left: 10px;
+        margin-left: 0px;
     }
 
     .prod img{
