@@ -38,12 +38,17 @@
         justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
-        margin: 54px auto 10px auto;/*  10 plus 44px header */
+        margin: 20px auto;/*  10 plus 44px header */
+        background: url('/crosswalk-lines.webp');
+        background-position: center;
+        background-size: contain;
+        mask-image: linear-gradient(transparent, black 40%, black 60%, transparent);
+        -webkit-mask-image: linear-gradient(transparent, black 40%, black 60%, transparent);
     }
 
     .text-area{
         padding: 50px;
-        background: radial-gradient(rgba(255,255,255,0.28) 15% ,black 70%);
+        background: radial-gradient(black 22%, transparent 72%);
     }
 
     .yellow{
@@ -100,5 +105,12 @@
         color: white;
         font-size: 14pt;
         font-weight: 700;
+    }
+
+    @media only screen and (max-width: 1200px){
+        .container{
+            mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+        }
     }
 </style>

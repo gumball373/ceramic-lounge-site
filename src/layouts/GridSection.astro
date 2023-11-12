@@ -25,7 +25,7 @@ var tabIndexx = 50;
             "Crazy visions I hope to see go public" -Alex
         </div>
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="FESTIGRAL"
-            data-image="/many-calipers.webp" data-infoText="Festigral, brought to you by one of our partners, is an event application meant to provide a unique experience, and solve the issue of 'ghost meets', or car shows listed online that dont happen anymore. Checlout out their irl mini-games on social media.">
+            data-image="/many-calipers.webp" data-infoText="Festigral, brought to you by one of our partners, is an event application meant to provide a unique experience, and solve the issue of 'ghost meets', or car shows listed online that dont happen anymore. Check out out their irl mini-games on social media.">
 
         </div>
 
@@ -47,7 +47,7 @@ var tabIndexx = 50;
         </div>
 
         <div grid-items tabindex={tabIndexx++} class="grid-items" data-pagetoshow="10mm"
-            data-image="/many-calipers.webp" data-infoText="You found it! That thing went missing ages ago. How many have I've been through since then? ... Ugh!">
+            data-image="/many-calipers.webp" data-infoText="You found it! That thing went missing ages ago. How many have I been through since then? ... Ugh!">
             <div>10mm</div>
         </div>
 
@@ -306,8 +306,9 @@ var tabIndexx = 50;
 
     @media only screen and (max-width: 675px){
         .big-grid{
-            transform: rotate3d(-11,83,-5,23deg) translateX(-13vw);
+            margin-left: -3vw;
             grid-template-rows: repeat(24, 32px);
+            grid-template-columns: repeat(9, 40px);
             padding-top: 5%;
         }
         .block-quote{
@@ -355,10 +356,11 @@ var tabIndexx = 50;
         }
     }
 
-    @media only screen and (max-width: 475px){
+    @media only screen and (max-width: 500px){
         .big-grid{
+            margin-left: -6vw;
             grid-template-rows: repeat(21, 7vw);
-            grid-template-columns: repeat(11, 8vw);
+            grid-template-columns: repeat(9, 8vw);
             padding-top: 9%;
             margin-bottom: 130%;
         }
