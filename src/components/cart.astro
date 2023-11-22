@@ -42,8 +42,8 @@ import ClientCart from "./ClientCart.svelte";
         background-color: #000000;
         z-index: 200;
         border-left: 2px solid black;
-        overflow: scroll;
         transition: 200ms ease-out;
+        overflow: hidden;
     }
     .top{
         display: flex;
@@ -62,12 +62,13 @@ import ClientCart from "./ClientCart.svelte";
     }
     .checkout-flex{
         position: absolute;
-        bottom: 5px;
-        right: 0px;
+        bottom: 12px;
+        right: 12px; left: 12px;
         display: flex;
         flex-direction: column;
         align-items: end;
         text-align: right;
+        margin-top: 10px;
         gap: 12px;
         z-index: 3;
     }

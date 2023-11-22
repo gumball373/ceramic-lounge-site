@@ -17,14 +17,14 @@ var tabIndexx = 12;
             {
                 coffeeProds.filter((product, idx) => idx < itemMax).map((product) => (
                     <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
                             <h>{product.frontmatter.name}</h>
                             <p>{product.frontmatter.description}</p>
                         </div>
                         <div class="tag-svg">
-                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor} />
                         </div>
                         <div class="price" tabindex={tabIndexx++}>
                             <span>${product.frontmatter.price}</span>
@@ -32,15 +32,15 @@ var tabIndexx = 12;
                         <div big-prod class="big-prod">
                             <div class="grid">
                                 <div>
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="increment"></div>-->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="decrement"></div> -->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
                                 </div>
                             </div>
                             <div class="title">{product.frontmatter.name}</div>
@@ -55,14 +55,14 @@ var tabIndexx = 12;
             {
                 stickerProds.filter((product, idx) => idx < itemMax).map((product) => (
                     <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
                             <h>{product.frontmatter.name}</h>
                             <p>{product.frontmatter.description}</p>
                         </div>
                         <div class="tag-svg">
-                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor} />
                         </div>
                         <div class="price" tabindex={tabIndexx++}>
                             <span>${product.frontmatter.price}</span>
@@ -70,15 +70,15 @@ var tabIndexx = 12;
                         <div big-prod class="big-prod">
                             <div class="grid">
                                 <div>
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="increment"></div>-->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="decrement"></div> -->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
                                 </div>
                             </div>
                             <div class="title">{product.frontmatter.name}</div>
@@ -93,14 +93,14 @@ var tabIndexx = 12;
             {
                 moreProds.filter((product, idx) => idx < itemMax).map((product) => (
                     <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                         
                         <div class="bottom">
                             <h>{product.frontmatter.name}</h>
                             <p>{product.frontmatter.description}</p>
                         </div>
                         <div class="tag-svg">
-                            <img src={product.frontmatter.tagSvg} alt="caliper" />
+                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor}/>
                         </div>
                         <div class="price" tabindex={tabIndexx++}>
                             <span>${product.frontmatter.price}</span>
@@ -108,15 +108,15 @@ var tabIndexx = 12;
                         <div big-prod class="big-prod">
                             <div class="grid">
                                 <div>
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="increment"></div>-->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
                                     <!--<div class="decrement"></div> -->
-                                    <img src={product.frontmatter.imgSrc} alt={product.frontmatter.altLabel} />
+                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
                                 </div>
                             </div>
                             <div class="title">{product.frontmatter.name}</div>
@@ -341,10 +341,17 @@ var tabIndexx = 12;
 
     .tag-svg img{
         width: 90%;
+        height: 90%;
         margin: 5%;
         
         transition: 400ms;
     }
+
+    .tag-svg .red{ filter: invert(15%) sepia(92%) saturate(5609%) hue-rotate(1deg) brightness(110%) contrast(124%); }
+    .tag-svg .brown{ filter: invert(20%) sepia(47%) saturate(7234%) hue-rotate(44deg) brightness(98%) contrast(102%); }
+    .tag-svg .blue{ filter: invert(8%) sepia(96%) saturate(6785%) hue-rotate(247deg) brightness(101%) contrast(145%); }
+    .tag-svg .yellow{ filter: invert(90%) sepia(85%) saturate(1709%) hue-rotate(356deg) brightness(108%) contrast(102%); }
+    .tag-svg .orange{ filter: invert(72%) sepia(51%) saturate(7153%) hue-rotate(360deg) brightness(101%) contrast(107%); }
 
     .prod:hover .tag-svg img{
         transform: rotate(575deg);

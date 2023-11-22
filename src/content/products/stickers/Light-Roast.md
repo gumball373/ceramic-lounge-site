@@ -2,8 +2,10 @@
 name: White Wall
 description: Light and Dark Roast Packaged together for your enjoyment
 price: 12.99
-imgSrc: /whitewall2-mod-min.webp
+img1: /light-roast-bag.webp
+img2: /light-roast-bag.webp
+img3: /light-roast-bag.webp
 altLabel: whitewall light roast
-tagSvg: /yellow-caliper-svg.svg
 priceID: price_1Njon5CJynSxb88wxuXC0aA7
+fillColor: yellow
 ---
