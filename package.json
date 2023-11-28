@@ -3,7 +3,7 @@
     "@astrojs/svelte": "^4.0.0",
     "@astrojs/vercel": "^4.0.3",
     "@stripe/stripe-js": "^2.1.2",
-    "astro": "^3.0.7",
+    "astro": "^3.6.1",
     "stripe": "^13.5.0",
     "svelte": "^4.2.0",
     "yarn": "^1.22.19"

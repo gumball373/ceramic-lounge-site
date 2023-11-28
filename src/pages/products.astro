@@ -5,8 +5,8 @@ import TopSpacer from '../components/topSpacer.astro';
 ---
 
 <Layout title='Cermic Lounge Store'>
-	<TopSpacer></TopSpacer>
 	<main class="store">
+		<TopSpacer></TopSpacer>
 		<div class="title-container">
 			<img class="title-pic" src="/products-svg.svg" alt="Products">
 			<div class="subtitle"> Check out all our goodies, from coffee to car stickers, we've got the fix.<br>
@@ -53,6 +53,9 @@ import TopSpacer from '../components/topSpacer.astro';
 	.store{
 		background: url("/garage2-min-min.webp");
 		background-size: cover;
+		padding-bottom: 25px;
+		-webkit-mask-image: linear-gradient(to bottom,transparent,black 1%,black 97%,transparent);
+    	mask-image: linear-gradient(to bottom,transparent,black 1%,black 97%,transparent);
 	}
 	.title-container{
 		display: flex;
