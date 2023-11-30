@@ -1,7 +1,7 @@
 ---
 name: Dark Roast
 description: A nice jar of long roasted coffee to keep you going through the long day
-price: 12.99
+price: 11.99
 img1: /dark-roast-bag.webp
 img2: /dark-roast-bag2.webp
 img3: /dark-roast-bag.webp
