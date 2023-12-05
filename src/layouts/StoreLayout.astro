@@ -1,6 +1,6 @@
 ---
 const coffeeProds = await Astro.glob("../content/products/coffee/*.md");
-const stickerProds = await Astro.glob("../content/products/stickers/*.md");
+// const stickerProds = await Astro.glob("../content/products/stickers/*.md");
 const moreProds = await Astro.glob("../content/products/more/*.md");
 const {itemMax = Infinity} = Astro.props;
 var tabIndexx = 12;
@@ -51,7 +51,7 @@ var tabIndexx = 12;
                 ))
             }
         </div>
-        <div class="grids stickers">
+        <!-- <div class="grids stickers">
             {
                 stickerProds.filter((product, idx) => idx < itemMax).map((product) => (
                     <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
@@ -73,11 +73,11 @@ var tabIndexx = 12;
                                     <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
-                                    <!--<div class="increment"></div>-->
+                                    <!-<div class="increment"></div>->
                                     <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
                                 </div>
                                 <div>
-                                    <!--<div class="decrement"></div> -->
+                                    <!-<div class="decrement"></div> ->
                                     <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ var tabIndexx = 12;
                     </div>
                 ))
             }
-        </div>
+        </div> -->
         <div class="grids more">
             {
                 moreProds.filter((product, idx) => idx < itemMax).map((product) => (

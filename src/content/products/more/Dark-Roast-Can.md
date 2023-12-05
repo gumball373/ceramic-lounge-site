@@ -1,4 +1,5 @@
 ---
+slug: /products/dark-roast-can
 name: Dark Roast Can
 description: Savory comfort for the invetiable search for the 10mm you lost. Dark Roast Grounds.
 price: 19.99

@@ -1,4 +1,5 @@
 ---
+slug: /products/light-roast-bag
 name: Light Roast Bag
 description: Ceramic Lounge Coffee's Lightest Roast sure to make your morning on race day a proper one.
 price: 11.99
