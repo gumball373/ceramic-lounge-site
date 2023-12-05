@@ -5,7 +5,7 @@ price: 11.99
 img1: /cold-brew-bag.webp
 img2: /cold-brew-bag2.webp
 img3: /cold-brew-bag.webp
-altLabel: cold brew
-priceID: price_1NjoVcCJynSxb88wBl3EesbX
+altLabel: cold brew bag
+priceID: price_1OK4PCCJynSxb88w6YhyHAO4
 fillColor: blue
 ---
