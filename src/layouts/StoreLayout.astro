@@ -226,9 +226,10 @@ var tabIndexx = 12;
     }
 
     .prod{
+        /* overflow: hidden; */
         aspect-ratio: 1 / 1;
         position: relative;
-        padding: 8px;
+        /* padding: 8px; */
         background-color: black;
         box-shadow: 0px 0px 8px white;
         cursor: pointer;
@@ -307,17 +308,18 @@ var tabIndexx = 12;
     .prod img{
         width: 100%;
         aspect-ratio: 1 / 1;
+        border-radius: 3px 3px 0px 0px;
     }
 
     .prod .bottom{
         position: absolute;
         background-color: black;
-        padding: inherit;
+        padding: 10px 8px;
         height: 20%;
         bottom: 0;
         left: 0;
         right: 0;
-        border-radius: 6px;
+        border-radius: 0px 0px 4px 4px;
     }
 
     .prod .tag-svg{
@@ -325,7 +327,7 @@ var tabIndexx = 12;
         width: 50px;
         height: 50px;
         background-color: black;
-        bottom: 10%;
+        bottom: 12%;
         right: 0;
         border: 1px solid white;
         border-right: 1px solid transparent;
@@ -444,7 +446,7 @@ var tabIndexx = 12;
         width: 150%;
         top: 0;
         left: 50%;
-        /* overflow: clip; */
+        overflow: hidden;
         transform: translateX(-50%) !important;
         background-color: black;
         box-shadow: 0px 0px 8px white;
@@ -459,42 +461,43 @@ var tabIndexx = 12;
 
     .big-prod .grid{
         display: grid;
-        width: 90%;
+        width: 100%;
+        max-height: 100%;
         /* height: 250px; */
-        aspect-ratio: 16/9;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-rows: repeat(8, auto);
-        margin: 5%;
+        /* margin: 5%; */
     }
 
     .big-prod .grid > :nth-child(1){
-        background: grey;
+        /* background: grey; */
         grid-column: 1/9;
         grid-row: 1/9;
         /* overflow: hidden; */
     }
     .big-prod .grid > :nth-child(2){
         position: relative;
-        background: grey;
+        /* background: grey; */
         grid-column: 9/13;
         grid-row: 1/5;
     }
     .big-prod .grid > :nth-child(3){
         position: relative;
-        background: grey;
+        /* background: grey; */
         grid-column: 9/13;
         grid-row: 5/9;
     }
 
     .big-prod .grid > * {
-        border: 2px solid black;
+        outline: 2px solid black;
+        outline-offset: -2px;
     }
 
     .big-prod .title{
-        margin: 0 5% 2% 5%;
+        margin: 2% 5%;
     }
     .big-prod .text{
-        margin: 5%;
+        margin: 2% 5%;
         margin-top: 0;
     }
     .big-prod .increment,
@@ -520,8 +523,6 @@ var tabIndexx = 12;
         flex-direction: row-reverse;
         align-items: center;
         gap: 10px;
-        margin: 5%;
-        margin-top: 0;
     }
     .buy-now{
         padding: 10px 25px;
