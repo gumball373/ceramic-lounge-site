@@ -19,7 +19,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <div class="sm-flex">
                 <div>
-                    <div class="circle"><div class="sm-text">Festigral</div></div>
+                    <div class="circle">
+                        <div class="sm-text">Festigral</div>
+                    </div>
                 </div>
                 <div>
                     <div class="circle"><div class="sm-text">Youtube</div></div>
@@ -31,53 +33,21 @@ import Layout from "../layouts/Layout.astro";
                     <div class="circle"><div class="sm-text">Tiktok</div></div>
                 </div>
             </div>
-            <div class="text link">
+            <!-- <div class="text link">
                 <t data-link="/calendar">Events</t><br> 
                 <u data-link="/calendar">Check Out Our Calendar</u>
-            </div>
+            </div> -->
         </div>
     </main>
 </Layout>
 
-<style is:global>
-    main{
-        min-height: 79vh;
-    }
-    
-	:root {
-		/* vars go here */
-	}
-
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: black;
-		color: white;
-		font-family: 'Courier New', Courier, monospace;
-		overflow-x: hidden;
-	}
-
-    body{
-        margin: 0;
-    }
-
-	::-webkit-scrollbar{
-    width: 12px;
-	}
-	::-webkit-scrollbar-thumb{
-    background: black;
-	border: 2px solid white;
-	}
-	::-webkit-scrollbar-corner{
-		background-color: black;
-	}
-</style>
 <style>
     .container{
         background: url("/concrete.webp");
         background-size: cover;
         -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent);
 		mask-image: linear-gradient(to bottom, transparent, black 3%, black 98%, transparent);
-        min-height: 82vh;
+        min-height: 86vh;
     }
     .contact{
         padding: 0px 0 65px 0;
@@ -120,19 +90,18 @@ import Layout from "../layouts/Layout.astro";
         width: 50px;
         border-radius: 50px;
         background-color: black;
-        box-shadow: 0 0 8px white;
-        border: 1px solid white;
+        box-shadow: 0 0 12px white;
         display: flex;
         justify-content: center;
         transition: 250ms;
     }
     .circle:hover{
-        box-shadow: 0 0 28px white;
+        box-shadow: 0 0 250px black;
         cursor: pointer;
     }
     .sm-text{
         text-align: center;
-        margin-top: 60px;
+        margin-top: 62px;
         width: fit-content;
     }
     u{

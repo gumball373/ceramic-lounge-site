@@ -3,7 +3,7 @@ import ClientCart from "./ClientCart.svelte";
 ---
 
 <div class="cart-user">
-    <img tabindex="5" src="/calendar.svg" alt="calendar" data-link="/calendar">
+    <!-- <img tabindex="5" src="/calendar.svg" alt="calendar" data-link="/calendar"> -->
     <img tabindex="6" src="/shopping-cart-icon.svg" alt="cart" onclick='toggleVissible()'>
     <div class="mobile-menu-button" tabindex="7">
         <div class="mobile-menu">
@@ -86,10 +86,9 @@ import ClientCart from "./ClientCart.svelte";
     }
     .cart-user{
 		position: absolute;
-		right: 8px;
-		top:0;
+		right: 0; top: 0;
 		height: 30px;
-		padding: 5px;
+		padding: 10px;
 		display: flex;
 		gap: 8px;
         align-items: center;
