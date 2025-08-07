@@ -1,8 +1,12 @@
 
 <div class="container">
     <div class="hero-section">
-        <img class="hero-photo" src="hero-can.webp" alt="Coffee Can">
-        <img class="hero-text" src="/hero-text.png" alt="Fuel Excellence">
+        <img class="hero-photo" src="gold-rim.webp"/>
+        <div class="hero-text">
+            <div>COFFEE</div>
+            <div>COFFEE</div>
+            <div>COFFEE</div>
+        </div>
     </div>
     <img class="bottom-divider" src="/hero-bottom-divider.svg" alt="flair">
 </div>
@@ -11,7 +15,7 @@
         position: relative;
         margin-top: 44px;
         width: 100%;
-        height: clamp(500px, 80vh, 80vw);
+        height: 120vh;
     }
     .hero-section{
         width: 100%;
@@ -21,23 +25,54 @@
     }
     .hero-photo{
         position: absolute;
-        right: 0; bottom: 0;
-        height: 100%;
-        z-index: 2;
-        /* aspect-ratio:; */
+        left: -1100px;
+        bottom: -1200px;
+        width: 2500px;
+        z-index: -1;
+        rotate: -304deg;
+        aspect-ratio: initial;
+         animation: spin 1200s linear infinite;
     }
+    @keyframes spin {
+      0% {
+        transform: rotate(-304deg);
+      }
+      100% {
+        transform: rotate(56deg);
+      }
+    }
+
     .hero-text{
+        content: "COFFEE";
+        top: 700px;
+        left: -175px;
         position: absolute;
-        bottom: 6%; left: calc((55vw / 2) - 1200px);
-        height: 90%;
-        z-index: 1;
+        font-size: 300pt;
+        font-weight: 900;
+        font-family: Helvetica;
+        z-index: -2;
+        color: #00000000;
+        -webkit-text-stroke: 5px white;
     }
+    .hero-text *{
+        position: absolute;
+        bottom: 0;
+    }
+    .hero-text>:nth-child(2){
+        opacity: 0.5;
+        transform: translate(-7%, -15%);
+    }
+    .hero-text>:nth-child(3){
+        opacity: 0.2;
+        transform: translate(-14%, -30%);
+    }
+   
     .bottom-divider{
         position: absolute;
         top: 100%;
         left: 0; right: 0;
         z-index: 3;
         min-height: 15px;
-        transform: translateY(-50%);
+        transform: translateY(-25%);
     }
 </style>

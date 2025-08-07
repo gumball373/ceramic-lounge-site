@@ -24,7 +24,7 @@ interface Frontmatter {
   fillColor: string;
 }
 
-const pages = await Astro.glob<Frontmatter>('../../content/products/more/*.md');
+const pages = await Astro.glob<Frontmatter>('../../content/products/*.md');
 
 const { slug } = Astro.params;
 const page = pages.find((page) => page.frontmatter.slug === slug);

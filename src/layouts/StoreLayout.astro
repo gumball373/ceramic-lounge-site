@@ -1,201 +1,93 @@
 ---
-const coffeeProds = await Astro.glob("../content/products/coffee/*.md");
-// const stickerProds = await Astro.glob("../content/products/stickers/*.md");
-const moreProds = await Astro.glob("../content/products/more/*.md");
+const coffeeProds = await Astro.glob("../content/products/*.md");
 const {itemMax = Infinity} = Astro.props;
 var tabIndexx = 12;
 ---
 
 <div class="container">
-    <div class="tab-flex">
-        <label for="Coffee" tabindex={tabIndexx++}><input id="Coffee" type="radio" name="tabs" checked="true">Coffee</input></label>
-        <label for="Stickers" tabindex={tabIndexx++}><input id="Stickers" type="radio" name="tabs">Stickers</input></label>
-        <label for="More" tabindex={tabIndexx++}><input id="More" type="radio" name="tabs">More</input></label>
-    </div>
     <div class="prod-grid">
-        <div class="grids coffee">
             {
                 coffeeProds.filter((product, idx) => idx < itemMax).map((product) => (
                     <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
+                        <div class="prod-wrapper">
+                            <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
                         
-                        <div class="bottom">
-                            <h>{product.frontmatter.name}</h>
-                            <p>{product.frontmatter.description}</p>
-                        </div>
-                        <div class="tag-svg">
-                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor} />
-                        </div>
-                        <div class="price" tabindex={tabIndexx++}>
-                            <span>${product.frontmatter.price}</span>
-                        </div>
-                        <div big-prod class="big-prod">
-                            <div class="grid">
-                                <div>
-                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!--<div class="increment"></div>-->
-                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!--<div class="decrement"></div> -->
-                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
-                                </div>
+                            <div class="bottom">
+                                <h>{product.frontmatter.name}</h>
+                                <p>{product.frontmatter.description}</p>
                             </div>
-                            <div class="title">{product.frontmatter.name}</div>
-                            <div class="text">{product.frontmatter.description}</div>
-                            <div class="buy-now-container"><div class="buy-now" onclick="">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                            <div class="tag-svg">
+                                <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor} />
+                            </div>
+                            <div class="price" tabindex={tabIndexx++}>
+                                <span>${product.frontmatter.price}</span>
+                            </div>
+                            <div big-prod class="big-prod">
+                                <div class="grid">
+                                    <div>
+                                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
+                                    </div>
+                                    <div>
+                                        <!--<div class="increment"></div>-->
+                                        <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
+                                    </div>
+                                    <div>
+                                        <!--<div class="decrement"></div> -->
+                                        <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
+                                    </div>
+                                </div>
+                                <div class="title">{product.frontmatter.name}</div>
+                                <div class="text">{product.frontmatter.description}</div>
+                                <div class="buy-now-container"><div class="buy-now" onclick="">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
+                            </div>
                         </div>
                     </div>
                 ))
             }
-        </div>
-        <!-- <div class="grids stickers">
-            {
-                stickerProds.filter((product, idx) => idx < itemMax).map((product) => (
-                    <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
-                        
-                        <div class="bottom">
-                            <h>{product.frontmatter.name}</h>
-                            <p>{product.frontmatter.description}</p>
-                        </div>
-                        <div class="tag-svg">
-                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor} />
-                        </div>
-                        <div class="price" tabindex={tabIndexx++}>
-                            <span>${product.frontmatter.price}</span>
-                        </div>
-                        <div big-prod class="big-prod">
-                            <div class="grid">
-                                <div>
-                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!-<div class="increment"></div>->
-                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!-<div class="decrement"></div> ->
-                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
-                                </div>
-                            </div>
-                            <div class="title">{product.frontmatter.name}</div>
-                            <div class="text">{product.frontmatter.description}</div>
-                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
-                        </div>
-                    </div>
-                ))
-            }
-        </div> -->
-        <div class="grids more">
-            {
-                moreProds.filter((product, idx) => idx < itemMax).map((product) => (
-                    <div prod-item class="prod" tabindex={tabIndexx++} data-priceID={product.frontmatter.priceID}>
-                        <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
-                        
-                        <div class="bottom">
-                            <h>{product.frontmatter.name}</h>
-                            <p>{product.frontmatter.description}</p>
-                        </div>
-                        <div class="tag-svg">
-                            <img src="/caliper.svg" alt="caliper" class={product.frontmatter.fillColor}/>
-                        </div>
-                        <div class="price" tabindex={tabIndexx++}>
-                            <span>${product.frontmatter.price}</span>
-                        </div>
-                        <div big-prod class="big-prod">
-                            <div class="grid">
-                                <div>
-                                    <img src={product.frontmatter.img1} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!--<div class="increment"></div>-->
-                                    <img src={product.frontmatter.img2} alt={product.frontmatter.altLabel} />
-                                </div>
-                                <div>
-                                    <!--<div class="decrement"></div> -->
-                                    <img src={product.frontmatter.img3} alt={product.frontmatter.altLabel} />
-                                </div>
-                            </div>
-                            <div class="title">{product.frontmatter.name}</div>
-                            <div class="text">{product.frontmatter.description}</div>
-                            <div class="buy-now-container"><div class="buy-now">${product.frontmatter.price}</div> <div>Add to Cart:</div></div>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
-        {itemMax != Infinity ?
-            <button class="view-all" onclick='location.replace("products")' tabindex={tabIndexx++}>
-                View All
-            </button>
-            : <style>.prod-grid{padding-bottom: 20px !important}</style>
-        }
+            {itemMax != Infinity ?
+        <button class="view-all" onclick='location.replace("products")' tabindex={tabIndexx++}>
+            View All
+        </button>
+        : <style>.prod-grid{padding-bottom: 20px !important}</style>
+    }
     </div>
+    
 </div>
 <style>
     :root{
         --bg-color: #00000090;
     }
 
-    .container{
-        margin: 35px;
-    }
-
-    .tab-flex{
-        display: flex;
-        gap: 10px;
-        margin-left: 10px;
-        margin-bottom: -2px;
-    }
-
-    .tab-flex label {
-        border: 2px solid white;
-        background-color: black;
-        border-radius: 3px;
-        color: white;
-        cursor: pointer;
-        padding: 0 8px;
-        border-bottom: 2px solid var(--bg-color);
-        z-index: 1;
-    }
-
-    .tab-flex input{
-        padding: 0;
-        margin: 0;
-        height: 0;
-        width: 0;
-        opacity: 0;
-    }
-
-    .tab-flex label:has(input:checked){
-        z-index: 3;
-    }
-
     .prod-grid{
         position: relative;
-        border: 2px solid white;
-        background-color: var(--bg-color);
         border-radius: 5px;
-        padding: 20px;
-        padding-bottom: 70px;
+        padding: 50px;
         z-index: 2;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: auto auto auto auto;
+        gap: 35px;
+        justify-content: center;
     }
 
-    .prod-grid .grids{
-        display: none;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 40px;
+    @media only screen and (max-width: 1200px){
+        .prod-grid{
+            grid-template-columns: auto auto auto;
+        }
+    }
+    @media only screen and (max-width: 1000px){
+        .prod-grid{
+            grid-template-columns: auto auto;
+        }
+    }
+    @media only screen and (max-width: 800px){
+        .prod-grid{
+            grid-template-columns: auto;
+        }
     }
 
     .view-all{
         position: absolute;
-        bottom: 10px;
+        top: 100%;
         right: 10px;
         padding: 10px;
         background: #AC0000;
@@ -226,19 +118,29 @@ var tabIndexx = 12;
     }
 
     .prod{
-        /* overflow: hidden; */
         aspect-ratio: 1 / 1;
         position: relative;
-        /* padding: 8px; */
-        background-color: black;
-        box-shadow: 0px 0px 8px white;
         cursor: pointer;
-        transition: 300ms;
-        flex-basis: max(18vw, 250px);
-        border-radius: 3px;
+        border-radius: 12px;
+        max-width: max(50vw, 290px);
     }
-
-    .prod::after{
+    .prod-wrapper{
+        border-radius: inherit;
+        transition: 300ms;
+    }
+    .prod::before{
+        position: absolute;
+        content: "";
+        background: #00000000;
+        height: 85%;
+        width: 100%;
+        top: 7.5%;
+        border-radius: inherit;
+        box-shadow: 0px 0px 15px white;
+        z-index: -1;
+        transition: 325ms ease;
+    }
+    /* .prod::after{
         content:"";
         background: radial-gradient(white, transparent);
         width: 1px;
@@ -250,11 +152,11 @@ var tabIndexx = 12;
         margin-top: 80%;
         opacity: 0;
         transition: 400ms;
-    }
+    } */
 
-    .prod:hover{
-        transform: rotate3d(-8,8,0,-10deg);
-    }
+    /* .prod-wrapper:hover{
+        transform: rotate3d(-8,8,0,-6deg);
+    } */
     /* .prod:has(.big-prod[shown="true"]){
         transform: none;
         transition: 0ms !important;
@@ -266,13 +168,13 @@ var tabIndexx = 12;
         transition: 0ms !important;
         cursor: default;
     } */
-    .prod:focus{
+    .prod-wrapper:focus{
         transform: none;
         transition: 0ms !important;
         cursor: default;
         overflow: unset;
     }
-    .prod:focus *{
+    .prod-wrapper:focus *{
         transform: none;
         transition: 0ms !important;
         cursor: default;
@@ -286,7 +188,7 @@ var tabIndexx = 12;
         margin-top: 0px;
     }
 
-    .prod::before{
+    /* .prod::before{
         content:"";
         background: radial-gradient(white, transparent);
         width: 40px;
@@ -298,17 +200,25 @@ var tabIndexx = 12;
         margin-left: 80%;
         opacity: 0;
         transition: 400ms;
-    }
+    } */
 
-    .prod:hover::before{
+    /* .prod:hover::before{
         opacity: 1;
         margin-left: 0px;
+    } */
+
+    .prod:hover::before{
+        height: 85% !important;
+        box-shadow: 0 0 37px white;
+    }
+    .prod-grid:has(.prod:hover) .prod::before{
+        height: 0%;
     }
 
     .prod img{
         width: 100%;
         aspect-ratio: 1 / 1;
-        border-radius: 3px 3px 0px 0px;
+        border-radius: inherit;
     }
 
     .prod .bottom{
@@ -319,7 +229,8 @@ var tabIndexx = 12;
         bottom: 0;
         left: 0;
         right: 0;
-        border-radius: 0px 0px 4px 4px;
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
     }
 
     .prod .tag-svg{
@@ -368,7 +279,7 @@ var tabIndexx = 12;
         height: 20px;
         text-align: center;
         padding-top: 2px;
-        border-bottom-right-radius: 3px;
+        border-bottom-right-radius: inherit;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -379,7 +290,7 @@ var tabIndexx = 12;
         user-select: none;
     }
 
-    @media only screen and (max-width: 475px){
+    @media only screen and (max-width: 600px){
         .price{
             font-size: 12px;
             width: max(31%, 53px);
@@ -390,11 +301,12 @@ var tabIndexx = 12;
             top: 0;
             bottom: 0;
             right: 56px;
-            left: 10px;
+            left: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             font-weight: 700;
+            font-size: 16pt;
         }
 
         .prod p{
