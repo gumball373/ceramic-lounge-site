@@ -1,5 +1,5 @@
 ---
-slug: /products/cold-brew-bag
+product: cold-brew-bag
 name: Cold Brew Bag
 description: A chilly blend with a bite to keep you up for that project car you'll definitely finish...
 price: 11.99

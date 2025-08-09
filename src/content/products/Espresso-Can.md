@@ -1,5 +1,5 @@
 ---
-slug: products/espresso-can
+product: espresso-can
 name: Espresso Can
 description: High Flavor, High Octane. For all the boost lovers trying to blow their rings out.
 price: 19.99

@@ -1,5 +1,5 @@
 ---
-slug: /products/dark-roast-bag
+product: dark-roast-bag
 name: Dark Roast Bag
 description: The perfect balance, unlike your air to fuel ratio. Reasonably roasted grounds.
 price: 11.99

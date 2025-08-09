@@ -1,0 +1,25 @@
+---
+
+import { getEntry } from "astro:content";
+// 1. Get the slug from the incoming server request
+const { product } = Astro.params;
+if (product === undefined) {
+  return Astro.redirect("/404");
+}
+// 2. Query for the entry directly using the request slug
+const prod = await getEntry("products", product);
+// 3. Redirect if the entry does not exist
+if (prod === undefined) {
+  return Astro.redirect("/404");
+}
+---
+
+<html>
+<head>
+  <title>{prod.data.name}</title>
+</head>
+<body>
+  <h1>{prod.data.price}</h1>
+  <p>{prod.data.description}</p>
+</body>
+</html>

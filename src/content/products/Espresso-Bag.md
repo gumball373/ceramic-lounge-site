@@ -1,5 +1,5 @@
 ---
-slug: /products/espresso-bag
+product: espresso-bag
 name: Espresso Bag
 description: High Flavor, High Octane. For all the boost lovers trying to blow their rings out.
 price: 11.99

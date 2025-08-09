@@ -1,5 +1,5 @@
 ---
-slug: /products/light-roast-can
+product: light-roast-can
 name: Light Roast Can
 description: Ceramic Lounge Coffee's Lightest Roast, sure to make your morning on race day a proper one.
 price: 19.99

@@ -1,5 +1,5 @@
 ---
-slug: /products/cold-brew-can
+product: cold-brew-can
 name: Cold Brew Can
 description: A chilly blend with a bite to keep you up for that project car you'll definitely finish...
 price: 19.99

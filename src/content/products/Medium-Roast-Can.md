@@ -1,5 +1,5 @@
 ---
-slug: /products/medium-roast-can
+product: medium-roast-can
 name: Medium Roast Can
 description: The perfect balance, unlike your air to fuel ratio. Reasonably roasted grounds.
 price: 19.99
