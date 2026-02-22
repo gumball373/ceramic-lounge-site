@@ -186,7 +186,7 @@ import Cart from "./cart.astro";
             return;
         }
         if(cartData[name] != null && document.getElementById('cart-'+name) == null){
-            cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': cartData[name].quantity};
+            cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': cartData[name].quantity ? cartData[name].quantity : 1};
         } else {
             cartData[name] = {'src':src, 'alt':alt, 'name':name, 'price':price, 'priceID':priceID, 'quantity': 1};
         }

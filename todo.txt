@@ -1,0 +1,11 @@
+add fade to bottom of grid section - footer on homepage does not fade like the others does
+
+add padding to products page - big prod frames fall off side and bottom of page, where fade removes them
+
+add social logos to footer, and make page buttons smaller and less prominent
+
+make calendar page just say, "coming soon" with better simple graphics - make it a percentage pased size, wider than it is now, and make the middle transparent, and round out the top a little more and make it a less "jarring" color
+
+add social logos to contact page
+
+potentially glass effect on header
